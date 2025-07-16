@@ -12,7 +12,6 @@
 
     <p>{{$user->welcoming_message}}</p>
 
-{{$user->id}}
     <div>
         <form action="subscribe" method="POST">
             @csrf

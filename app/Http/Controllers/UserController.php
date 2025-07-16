@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,5 +17,44 @@ class UserController extends Controller
         }
 
         return view('subscription', ['user' => $user]);
+    }
+
+    public function showAdminPage(String $nameslug, Request $request)
+    {
+        $user = User::where('nameslug', $nameslug)->first();
+
+        if (!$user) {
+            abort(404);
+        }
+
+        return view('admin', ['user' => $user]);
+    }
+
+    public function login(Request $request)
+    {
+        $incomingFields = $request->validate([
+            'user_id' => ['required', 'exists:users,id'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt([
+            'id' => $incomingFields['user_id'],
+            'password' => $incomingFields['password']
+        ])) {
+            $request->session()->regenerate();
+        }
+
+        return redirect('/' . Auth::user()->nameslug . '/admin');
+    }
+
+    public function logout(Request $request)
+    {
+        $incomingFields = $request->validate(
+            ['nameslug' => ['required']]
+        );
+        $nameslug = $incomingFields['nameslug'];
+
+        Auth::logout();
+        return redirect('/' . $nameslug);
     }
 }
