@@ -10,7 +10,7 @@
 <body>
     <h1>{{$user->name}}</h1>
 
-    <p>Hello, I can't make any appointments at the moment, please subscribe.</p>
+    <p>{{$user->welcoming_message}}</p>
 
 </body>
 
