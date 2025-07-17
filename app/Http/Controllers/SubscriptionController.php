@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -32,5 +33,21 @@ class SubscriptionController extends Controller
         }
 
         return view('confirmation', ['subscription' => $subscription]);
+    }
+
+    public function deleteSubscription(Subscription $subscription)
+    {
+
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+
+        $user = Auth::user();
+
+        if ($user->id === $subscription['user_id']) {
+            $subscription->delete();
+        }
+
+        return redirect('/' . $user->nameslug . '/admin');
     }
 }

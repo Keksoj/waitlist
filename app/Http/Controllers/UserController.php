@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller

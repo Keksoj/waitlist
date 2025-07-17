@@ -21,6 +21,11 @@
         </summary>
         <p>{{$subscription['email']}}&emsp;{{$subscription['commentary']}}</p>
         <p>Subscribed on the {{$subscription['created_at']}}</p>
+        <form action="/subscription/{{$subscription->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button style="background-color: red;">Delete</button>
+        </form>
     </details>
     @endforeach
 

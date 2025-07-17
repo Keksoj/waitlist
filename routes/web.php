@@ -11,6 +11,8 @@ Route::get('/', function () {
 Route::get('/{nameslug}', [UserController::class, 'showSubscriptionPage']);
 Route::get('/{nameslug}/admin', [UserController::class, 'accessAdminPage']);
 
-Route::post('/subscribe', [SubscriptionController::class, 'createSubscription']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
+
+Route::post('/subscribe', [SubscriptionController::class, 'createSubscription']);
+Route::delete('/subscription/{subscription}', [SubscriptionController::class, 'deleteSubscription']);
