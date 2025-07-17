@@ -19,15 +19,20 @@ class UserController extends Controller
         return view('subscription', ['user' => $user]);
     }
 
-    public function showAdminPage(String $nameslug, Request $request)
+    public function accessAdminPage(String $nameslug, Request $request)
     {
         $user = User::where('nameslug', $nameslug)->first();
 
         if (!$user) {
-            abort(404);
+            abort(404, 'This practitioner does not exist');
         }
 
-        return view('admin', ['user' => $user]);
+        if (Auth::check()) {
+            // TODO: retrieve subscription and pass them to the admin page
+            return view('admin', ['user' => $user]);
+        } else {
+            return view('login', ['user' => $user]);
+        }
     }
 
     public function login(Request $request)

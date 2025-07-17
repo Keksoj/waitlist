@@ -22,12 +22,23 @@
         <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
         <button>Log out</button>
     </form>
-    
     @else
 
-    <p>Something is wrong, you should not be able to view this page without being logged in.</p>
+    <div>
+        <h2>Log in as {{$user->name}}</h2>
+        <form action="/login" method="POST">
+            @csrf
+            <input type="hidden" name="user_id" value="{{$user->id}}">
+            <input name="password" type="password" placeholder="password">
+            <button>Login</button>
+        </form>
+    </div>
 
     @endauth
+
+
+
+
 
 </body>
 

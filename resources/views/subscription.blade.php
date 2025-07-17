@@ -24,6 +24,7 @@
             <br>
             <textarea name="commentary" placeholder="commentary (optional)"></textarea>
             <br>
+            <!-- TODO add a I am not a robot captcha-->
             <button>Subscribe</button>
         </form>
     </div>
