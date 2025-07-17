@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function showSubscriptionPage(String $nameslug, Request $request)
+    public function showSubscriptionForm(String $nameslug, Request $request)
     {
         $user = User::where('nameslug', $nameslug)->first();
 
@@ -17,7 +17,7 @@ class UserController extends Controller
             abort(404);
         }
 
-        return view('subscription', ['user' => $user]);
+        return view('subscriptionForm', ['user' => $user]);
     }
 
     public function accessAdminPage(String $nameslug, Request $request)

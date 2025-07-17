@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/{nameslug}', [UserController::class, 'showSubscriptionPage']);
+Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
 Route::get('/{nameslug}/admin', [UserController::class, 'accessAdminPage']);
 
 Route::post('/logout', [UserController::class, 'logout']);
