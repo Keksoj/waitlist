@@ -15,11 +15,13 @@
 
     @foreach($subscriptions as $subscription)
     @csrf
-    <a href="/subscription/{{$subscription->id}}">
-        <div style="border: 3px solid black; margin: 10px; padding-left: 3em; background-color:rgb(247, 208, 185);">
-            <p>{{$subscription['name']}}&emsp;{{$subscription['telephone']}}
-        </div>
-    </a>
+    <details style="border: 3px solid black; margin: 10px; padding-left: 1em; background-color:rgb(247, 208, 185);">
+        <summary>
+            {{$subscription['name']}}&emsp;{{$subscription['telephone']}}
+        </summary>
+        <p>{{$subscription['email']}}&emsp;{{$subscription['commentary']}}</p>
+        <p>Subscribed on the {{$subscription['created_at']}}</p>
+    </details>
     @endforeach
 
 
