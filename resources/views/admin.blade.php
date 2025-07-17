@@ -13,6 +13,14 @@
     <h1>My waiting list</h1>
 
 
+    @foreach($subscriptions as $subscription)
+    @csrf
+    <a href="/subscription/{{$subscription->id}}">
+        <div style="border: 3px solid black; margin: 10px; padding-left: 3em; background-color:rgb(247, 208, 185);">
+            <p>{{$subscription['name']}}&emsp;{{$subscription['telephone']}}
+        </div>
+    </a>
+    @endforeach
 
 
 
@@ -22,7 +30,7 @@
         <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
         <button>Log out</button>
     </form>
-    
+
     @else
 
     <p>Something is wrong, you should not be able to view this page without being logged in.</p>
