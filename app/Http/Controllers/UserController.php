@@ -38,6 +38,32 @@ class UserController extends Controller
         }
     }
 
+    public function accessEditWelcomingMessage()
+    {
+        if (Auth::check()) {
+            return view('welcomingMessage', ['user' => Auth::user()]);
+        } else {
+            abort(403, "Who are you? How did you get here?");
+        }
+    }
+
+    public function updateWelcomingMessage(String $nameslug, Request $request)
+    {
+        $incomingFields = $request->validate([
+            'welcoming_message' => 'required', // TODO: sanitize for anything funky, postgresql injections and whatnot
+        ]);
+
+        $user = Auth::user();
+
+        if ($user->nameslug !== $nameslug) {
+            abort(401, "Unauthorized. Who are you? How did you even get here?");
+        }
+
+        $user->update($incomingFields);
+
+        return view('welcomingMessage', ['user' => $user]);
+    }
+
     public function login(Request $request)
     {
         $incomingFields = $request->validate([

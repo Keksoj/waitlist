@@ -31,6 +31,12 @@
 
 
 
+    <form action="{{ url( '/' . $user->nameslug . '/edit-welcome') }}" method="GET">
+        @csrf
+        <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
+        <button>Edit my welcome message</button>
+    </form>
+
 
     <form action="/logout" method="POST">
         @csrf
