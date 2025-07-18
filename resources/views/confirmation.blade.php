@@ -18,15 +18,44 @@
 
     @csrf
 
-    <p>Your name: {{$subscription->name}}</p>
-    <p>Your phone number: {{$subscription->telephone}}</p>
+    <div class="flex space-x-4">
+        <div class="w-1/2 text-right">
+            <p>Your name:</p>
+        </div>
+        <div class="w-1/2 text-left font-semibold">
+            <p>{{$subscription->name}}</p>
+        </div>
+    </div>
+
+    <div class="flex space-x-4">
+        <div class="w-1/2 text-right">
+            <p>Your phone number:</p>
+        </div>
+        <div class="w-1/2 text-left font-semibold">
+            <p>{{$subscription->telephone}}</p>
+        </div>
+    </div>
 
     @if ($subscription->email !== null)
-    <p>Your email: {{$subscription->email}}</p>
+    <div class="flex space-x-4">
+        <div class="w-1/2 text-right">
+            <p>Your email:</p>
+        </div>
+        <div class="w-1/2 text-left font-semibold">
+            <p>{{$subscription->email}}</p>
+        </div>
+    </div>
     @endif
 
     @if ($subscription->commentary !== null)
-    <p>Your commentary: {{$subscription->commentary}}</p>
+    <div class="flex space-x-4">
+        <div class="w-1/2 text-right">
+            <p>Your commentary:</p>
+        </div>
+        <div class="w-1/2 text-left font-semibold">
+            <p>{{$subscription->commentary}}</p>
+        </div>
+    </div>
     @endif
 
 
