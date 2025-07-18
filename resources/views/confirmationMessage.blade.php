@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
+    <title>edit confirmation message</title>
+</head>
+
+<body class="flex-body">
+    @auth
+
+    <main class="main-content">
+        <h1 class="top-h1">My confirmation message</h1>
+
+        <section class="user-paragraph">
+            <p>“{{$user->confirmation_message}}”</p>
+        </section>
+
+        <div class="small-paragraph">
+            <p>Edit your confirmation message below:</p>
+        </div>
+
+        <form
+            action="{{ url( '/' . $user->nameslug . '/edit-confirmation') }}"
+            method="POST"
+            class="px-4 my-10 max-w-3xl mx-auto space-y-6">
+
+            @csrf
+
+            <textarea name="confirmation_message" rows="9" class="input-style">{{$user->confirmation_message}}
+            </textarea>
+
+            <button class="validation-button">update</button>
+        </form>
+    </main>
+
+
+
+    <div class="footer-buttons">
+        <form action="/logout" method="POST">
+            @csrf
+            <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
+            <button class="direction-button">Log out</button>
+        </form>
+
+        <form action="{{ url( '/' . $user->nameslug . '/admin') }}" method="GET">
+            @csrf
+            <button class="direction-button">Back to the admin page</button>
+        </form>
+    </div>
+
+    @else
+
+    <p>Something is wrong, you should not be able to view this page without being logged in.</p>
+
+    @endauth
+
+</body>
+
+</html>
