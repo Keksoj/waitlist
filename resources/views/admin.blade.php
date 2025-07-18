@@ -37,10 +37,13 @@
             <div class="p-2">
                 <p>{{$subscription['commentary']}}</p>
             </div>
-            <form action="/subscription/{{$subscription->id}}" method="POST">
+            <form
+                action="/subscription/{{$subscription->id}}"
+                method="POST"
+                >
                 @csrf
                 @method('DELETE')
-                <button style="background-color: red; cursor:pointer;">Delete</button>
+                <button class="cursor-pointer text-white m-2 p-2 rounded bg-red-500">Delete</button>
             </form>
         </details>
         @endforeach
