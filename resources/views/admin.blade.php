@@ -37,10 +37,39 @@
             <div class="p-2">
                 <p>{{$subscription['commentary']}}</p>
             </div>
+
+            @if (property_exists($subscriptions, 'notes' ))
+            @foreach($subscriptions->notes as $note)
+            <div class="">
+                <p class="text-sm text-gray-700">{{ $note->content }}</p>
+            </div>
+            @endforeach
+            @endif
+
+            <form
+                action="create-note"
+                method="POST"
+                class="px-4 my-10 max-w-3xl mx-auto space-y-6">
+                <div class="flex">
+
+                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                    <div>
+                        <input
+                            name="note"
+                            type="text"
+                            placeholder="add note…"
+                            class="bg-white border p-2 border-gray-400 block py-2 w-full rounded focus:border-teal-500 placeholder-gray-400">
+                    </div>
+                    <div>
+                        <button class="validation-button">Add</button>
+                    </div>
+                </div>
+
+            </form>
+
             <form
                 action="/subscription/{{$subscription->id}}"
-                method="POST"
-                >
+                method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="cursor-pointer text-white m-2 p-2 rounded bg-red-500">Delete</button>

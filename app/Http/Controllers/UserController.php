@@ -30,7 +30,7 @@ class UserController extends Controller
 
         if (Auth::check()) {
             // TODO: retrieve subscription and pass them to the admin page
-            $subscriptions = Subscription::where('user_id', $user->id)->get();
+            $subscriptions = Subscription::with('notes')->where('user_id', $user->id)->get();
             return view('admin', ['user' => $user, 'subscriptions' => $subscriptions]);
         } else {
             $subscriptions = [];
