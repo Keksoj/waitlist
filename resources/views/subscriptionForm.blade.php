@@ -13,7 +13,7 @@
     <h1
         class="mx-auto justify-center text-center text-3xl p-6 md:p-10 lg:p-14 xl:p-16">{{$user->name}}</h1>
 
-    <section class="mx-auto justify-center max-w-3xl  text-center text-xl p-6 md:p-14 lg:p-16 xl:p-20">
+    <section class="user-paragraph">
         <p>{{$user->welcoming_message}}</p>
     </section>
 
