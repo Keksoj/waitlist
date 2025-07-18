@@ -24,6 +24,10 @@
     @apply bottom-0 left-0 p-4 shadow flex space-x-4 w-full;
 }
 
+.small-paragraph {
+    @apply px-4 max-w-3xl mx-auto space-y-6;
+}
+
 .input-style {
     @apply bg-white border p-2 border-gray-400 block py-2 w-full rounded focus:border-teal-500 placeholder-gray-400;
 }

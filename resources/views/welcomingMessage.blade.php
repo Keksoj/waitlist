@@ -14,15 +14,13 @@
         @auth
         <h1 class="top-h1">My welcome message</h1>
 
-        <p>Here is your welcome message:</p>
-
         <section class="user-paragraph">
-
             <p>“{{$user->welcoming_message}}”</p>
         </section>
 
-
-        <p>Edit it here:</p>
+        <div class="small-paragraph">
+            <p>Edit your confirmation message below:</p>
+        </div>
 
         <form
             action="{{ url( '/' . $user->nameslug . '/edit-welcome') }}"
