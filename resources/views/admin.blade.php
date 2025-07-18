@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
     <title>Admin</title>
 </head>
 
@@ -31,22 +32,31 @@
 
 
 
-    <form action="{{ url( '/' . $user->nameslug . '/edit-welcome') }}" method="GET">
+    <form
+        action="{{ url( '/' . $user->nameslug . '/edit-welcome') }}"
+        method="GET"
+        class="m-4">
         @csrf
         <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
-        <button>Edit my welcome message</button>
+        <button class="direction-button">Edit my welcome message</button>
     </form>
 
-    <form action="{{ url( '/' . $user->nameslug . '/edit-confirmation') }}" method="GET">
+    <form
+        action="{{ url( '/' . $user->nameslug . '/edit-confirmation') }}"
+        method="GET"
+        class="m-4">
         @csrf
         <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
-        <button>Edit my confirmation message</button>
+        <button class="direction-button">Edit my confirmation message</button>
     </form>
 
-    <form action="/logout" method="POST">
+    <form
+        action="/logout"
+        method="POST"
+        class="m-4">
         @csrf
         <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
-        <button>Log out</button>
+        <button class="direction-button">Log out</button>
     </form>
 
     @else
