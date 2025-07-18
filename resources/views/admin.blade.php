@@ -11,7 +11,7 @@
 <body>
 
     @auth
-    <h1>My waiting list</h1>
+    <h1 class="top-h1">My waiting list</h1>
 
 
     @foreach($subscriptions as $subscription)
