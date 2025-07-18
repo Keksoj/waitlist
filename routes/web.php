@@ -24,5 +24,6 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/subscribe', [SubscriptionController::class, 'createSubscription']);
 Route::post('/{nameslug}/subscribe', [SubscriptionController::class, 'createSubscription']);
 
+Route::post('/{nameslug}/create-note', [SubscriptionController::class, 'createNote']);
 
 Route::delete('/subscription/{subscription}', [SubscriptionController::class, 'deleteSubscription']);

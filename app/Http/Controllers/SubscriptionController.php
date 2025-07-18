@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -58,5 +59,28 @@ class SubscriptionController extends Controller
         }
 
         return redirect('/' . $user->nameslug . '/admin');
+    }
+
+    public function createNote(Request $request)
+    {
+        $user = Auth::user();
+
+        // TODO: sanitize the content
+        $incomingFields = $request->validate([
+            'content' => ['required'],
+            'subscription_id' => ['required', 'exists:subscriptions,id']
+        ]);
+
+        $subscription = Subscription::where('id', $incomingFields['subscription_id'])->get()->first();
+
+        if (!$subscription->belongsTo($user)) {
+            abort(403, "Who are you? How did you get here?");
+        }
+
+        $subscription->notes()->create($incomingFields);
+
+        $subscriptions = Subscription::with('notes')->where('user_id', $user->id)->get();
+
+        return view('admin', ['user' => $user, 'subscriptions' => $subscriptions]);
     }
 }

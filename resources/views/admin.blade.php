@@ -38,24 +38,23 @@
                 <p>{{$subscription['commentary']}}</p>
             </div>
 
-            @if (property_exists($subscriptions, 'notes' ))
-            @foreach($subscriptions->notes as $note)
-            <div class="">
-                <p class="text-sm text-gray-700">{{ $note->content }}</p>
+            @foreach($subscription->notes as $note)
+            <div class="flex">
+                <p class="text-sm pr-2 text-gray-500">{{$note->created_at->translatedFormat('j F')}}</p>
+                <p class="text-sm text-gray-700">{{$note->content }}</p>
             </div>
             @endforeach
-            @endif
 
             <form
                 action="create-note"
                 method="POST"
                 class="px-4 my-10 max-w-3xl mx-auto space-y-6">
                 <div class="flex">
-
-                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                    @csrf
+                    <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
                     <div>
                         <input
-                            name="note"
+                            name="content"
                             type="text"
                             placeholder="add note…"
                             class="bg-white border p-2 border-gray-400 block py-2 w-full rounded focus:border-teal-500 placeholder-gray-400">
