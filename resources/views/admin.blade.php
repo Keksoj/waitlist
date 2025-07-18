@@ -13,22 +13,29 @@
     @auth
     <h1 class="top-h1">My waiting list</h1>
 
-
-    @foreach($subscriptions as $subscription)
-    @csrf
-    <details style="border: 3px solid black; margin: 10px; padding-left: 1em; background-color:rgb(247, 208, 185);">
-        <summary>
-            {{$subscription['name']}}&emsp;{{$subscription['telephone']}}
-        </summary>
-        <p>{{$subscription['email']}}&emsp;{{$subscription['commentary']}}</p>
-        <p>Subscribed on the {{$subscription['created_at']}}</p>
-        <form action="/subscription/{{$subscription->id}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button style="background-color: red;">Delete</button>
-        </form>
-    </details>
-    @endforeach
+    <div class="my-5 max-w-3xl mx-auto space-y-6">
+        @foreach($subscriptions as $subscription)
+        @csrf
+        <details class="border border-gray-300 m-2">
+            <summary class="cursor-pointer p-2 list-none bg-amber-200">
+                <div class="flex justify-between">
+                    <div class="bg-gray-300 font-semibold">
+                        <p>{{$subscription['name']}}</p>
+                    </div>
+                    <div class="bg-gray-400">
+                        <p>{{$subscription['telephone']}}</p>
+                    </div>
+            </summary>
+            <p>{{$subscription['email']}}&emsp;{{$subscription['commentary']}}</p>
+            <p>Subscribed on the {{$subscription['created_at']}}</p>
+            <form action="/subscription/{{$subscription->id}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button style="background-color: red;">Delete</button>
+            </form>
+        </details>
+        @endforeach
+    </div>
 
 
 
