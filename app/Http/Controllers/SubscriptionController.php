@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
-    public function createSubscription(Request $request, $nameslug)
+    public function createSubscription(Request $request)
     {
 
         // TODO: sanitize email
@@ -33,7 +33,7 @@ class SubscriptionController extends Controller
             abort('500');
         }
 
-        $confirmation_message = User::where('nameslug', $nameslug)->get()->first()?->confirmation_message;
+        $confirmation_message = User::where('id', $subscription->user_id)->get()->first()?->confirmation_message;
 
         return view(
             'confirmation',
