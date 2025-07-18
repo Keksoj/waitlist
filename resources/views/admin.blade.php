@@ -16,22 +16,31 @@
     <div class="my-5 max-w-3xl mx-auto space-y-6">
         @foreach($subscriptions as $subscription)
         @csrf
-        <details class="border border-gray-300 m-2">
-            <summary class="cursor-pointer p-2 list-none bg-amber-200">
+        <details class="border border-gray-300 bg-blue-200 m-2">
+            <summary class="cursor-pointer p-2 list-none bg-blue-300">
                 <div class="flex justify-between">
-                    <div class="bg-gray-300 font-semibold">
+                    <div class="font-semibold">
                         <p>{{$subscription['name']}}</p>
                     </div>
-                    <div class="bg-gray-400">
+                    <div class="">
                         <p>{{$subscription['telephone']}}</p>
                     </div>
             </summary>
-            <p>{{$subscription['email']}}&emsp;{{$subscription['commentary']}}</p>
-            <p>Subscribed on the {{$subscription['created_at']}}</p>
+            <div class="flex justify-between">
+                <div class="font-light p-2">
+                    <p>{{$subscription['email']}}</p>
+                </div>
+                <div class="p-2">
+                    <p>Subscribed on the {{$subscription['created_at']}}</p>
+                </div>
+            </div>
+            <div class="p-2">
+                <p>{{$subscription['commentary']}}</p>
+            </div>
             <form action="/subscription/{{$subscription->id}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button style="background-color: red;">Delete</button>
+                <button style="background-color: red; cursor:pointer;">Delete</button>
             </form>
         </details>
         @endforeach
