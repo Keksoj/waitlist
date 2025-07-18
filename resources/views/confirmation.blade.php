@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Your subscription is a success!</h1>
+    <h1 class="top-h1">Your subscription is a success!</h1>
 
     <section class="user-paragraph">
         <p>{{$confirmation_message}}

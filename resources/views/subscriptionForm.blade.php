@@ -10,8 +10,7 @@
 
 <body class="bg-gray-100">
 
-    <h1
-        class="mx-auto justify-center text-center text-3xl p-6 md:p-10 lg:p-14 xl:p-16">{{$user->name}}</h1>
+    <h1 class="top-h1">{{$user->name}}</h1>
 
     <section class="user-paragraph">
         <p>{{$user->welcoming_message}}</p>

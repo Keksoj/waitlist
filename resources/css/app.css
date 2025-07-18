@@ -17,9 +17,9 @@
 }
 
 .user-paragraph {
-    @apply mx-auto justify-center max-w-3xl  text-center text-xl p-6 md:p-14 lg:p-16 xl:p-20;
+    @apply mx-auto justify-center max-w-3xl text-center text-xl p-6 md:p-14 lg:p-16 xl:p-20;
 }
 
-/* .top-h1 {
-    @apply 
-} */
+.top-h1 {
+    @apply mx-auto justify-center text-center text-3xl p-6 md:p-10 lg:p-14 xl:p-16;
+}
