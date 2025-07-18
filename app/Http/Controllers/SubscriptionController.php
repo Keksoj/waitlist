@@ -79,8 +79,6 @@ class SubscriptionController extends Controller
 
         $subscription->notes()->create($incomingFields);
 
-        $subscriptions = Subscription::with('notes')->where('user_id', $user->id)->get();
-
-        return view('admin', ['user' => $user, 'subscriptions' => $subscriptions]);
+        return redirect("/{$user->nameslug}/admin");
     }
 }

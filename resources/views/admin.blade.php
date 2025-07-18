@@ -26,6 +26,7 @@
                         <p>{{$subscription['telephone']}}</p>
                     </div>
             </summary>
+            
             <div class="flex justify-between">
                 <div class="font-light p-2">
                     <p>{{$subscription['email']}}</p>
@@ -39,7 +40,7 @@
             </div>
 
             @foreach($subscription->notes as $note)
-            <div class="flex">
+            <div class="flex pl-2">
                 <p class="text-sm pr-2 text-gray-500">{{$note->created_at->translatedFormat('j F')}}</p>
                 <p class="text-sm text-gray-700">{{$note->content }}</p>
             </div>
@@ -48,7 +49,7 @@
             <form
                 action="create-note"
                 method="POST"
-                class="px-4 my-10 max-w-3xl mx-auto space-y-6">
+                class="px-4 my-4 max-w-3xl mx-auto space-y-6">
                 <div class="flex">
                     @csrf
                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
@@ -57,10 +58,10 @@
                             name="content"
                             type="text"
                             placeholder="add note…"
-                            class="bg-white border p-2 border-gray-400 block py-2 w-full rounded focus:border-teal-500 placeholder-gray-400">
+                            class="bg-white border text-sm p-2 border-gray-400 block py-2 w-full rounded focus:border-teal-500 placeholder-gray-400">
                     </div>
                     <div>
-                        <button class="validation-button">Add</button>
+                        <button class="validation-button text-sm">Add</button>
                     </div>
                 </div>
 
