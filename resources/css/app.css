@@ -12,6 +12,18 @@
 
 }
 
+.flex-body {
+    @apply min-h-screen flex flex-col;
+}
+
+.main-content {
+    @apply flex-grow;
+}
+
+.footer-buttons {
+    @apply bottom-0 left-0 p-4 shadow flex space-x-4 w-full;
+}
+
 .input-style {
     @apply bg-white border p-2 border-gray-400 block py-2 w-full rounded focus:border-teal-500 placeholder-gray-400;
 }
