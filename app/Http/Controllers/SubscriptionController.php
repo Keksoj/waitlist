@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
-    public function createSubscription(Request $request)
+    public function createSubscription(Request $request, $nameslug)
     {
 
         // TODO: sanitize email
@@ -32,7 +33,15 @@ class SubscriptionController extends Controller
             abort('500');
         }
 
-        return view('confirmation', ['subscription' => $subscription]);
+        $confirmation_message = User::where('nameslug', $nameslug)->get()->first()?->confirmation_message;
+
+        return view(
+            'confirmation',
+            [
+                'subscription' => $subscription,
+                'confirmation_message' => $confirmation_message
+            ]
+        );
     }
 
     public function deleteSubscription(Subscription $subscription)

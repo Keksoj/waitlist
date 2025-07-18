@@ -10,7 +10,9 @@
 <body>
     <h1>Your subscription is a success!</h1>
 
-    <!-- <p>TODO: introduce subscription_message by the user</p> -->
+
+    <p>{{$confirmation_message}}<p>
+
     @csrf
     
     <p>Your name: {{$subscription->name}}</p>
