@@ -66,7 +66,7 @@
         <!-- TODO add a I am not a robot captcha-->
 
         <div class="px-8 py-6 flex justify-between">
-            <button class="bg-green-600 max-w-3xl px-4 py-2 text-white rounded font-semibold">
+            <button class="validation-button">
                 Subscribe
             </button>
         </div>
