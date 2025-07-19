@@ -59,6 +59,12 @@
     @endif
 
 
+    <div class="small-paragraph mt-3 text-center">
+        <p>Please note the deletion code that will allow you to cancel your subscription if you wish:</p>
+    </div>
+
+    <div class="font-mono text-xl text-center">{{$subscription->deletion_code}}</div>
+
 
 
 </body>
