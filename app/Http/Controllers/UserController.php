@@ -151,6 +151,6 @@ class UserController extends Controller
         $nameslug = $incomingFields['nameslug'];
 
         Auth::logout();
-        return redirect('/' . $nameslug);
+        return redirect('/' . $nameslug . '/admin');
     }
 }
