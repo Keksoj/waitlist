@@ -27,6 +27,9 @@ class SubscriptionController extends Controller
             'commentary' => [],
         ]);
 
+
+        $incomingFields['deletion_code'] = randomString();
+
         // TODO: prevent email and telephone reuse (to prevent flooding)
         $subscription = Subscription::create($incomingFields);
 
@@ -81,4 +84,17 @@ class SubscriptionController extends Controller
 
         return redirect("/{$user->nameslug}/admin");
     }
+}
+
+function randomString(int $length = 7): string
+{
+    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    $result = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $result .= $characters[random_int(0, strlen($characters) - 1)];
+    }
+
+    return $result;
 }
