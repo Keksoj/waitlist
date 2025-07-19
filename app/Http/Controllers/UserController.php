@@ -79,13 +79,10 @@ class UserController extends Controller
         $user = $request->user();
 
         $validatedInput = $request->validate([
-            // 'user_id' => ['required', 'exists:users,id'],
             'current_password' => ['required'],
             'new_password' => ['required'], // TODO: add Password::defaults but customize the defaults in AuthServiceProvider
             'new_password_confirmation' => ['required', 'same:new_password']
         ]);
-
-        // $user = User::findOrFail($validatedInput['user_id']);
 
         if (!Hash::check($validatedInput['current_password'], $user->password)) {
             return back()->withErrors(['current_password' => 'The current password is incorrect']);
