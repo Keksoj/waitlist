@@ -26,7 +26,7 @@
                         <p>{{$subscription['telephone']}}</p>
                     </div>
             </summary>
-            
+
             <div class="flex justify-between">
                 <div class="font-light p-2">
                     <p>{{$subscription['email']}}</p>
@@ -49,21 +49,23 @@
             <form
                 action="create-note"
                 method="POST"
-                class="px-4 my-4 max-w-3xl mx-auto space-y-6">
-                <div class="flex">
-                    @csrf
-                    <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
-                    <div>
-                        <input
-                            name="content"
-                            type="text"
-                            placeholder="add note…"
-                            class="bg-white border text-sm p-2 border-gray-400 block py-2 w-full rounded focus:border-teal-500 placeholder-gray-400">
-                    </div>
-                    <div>
-                        <button class="validation-button text-sm">Add</button>
-                    </div>
-                </div>
+                class="flex items-stretch px-2 my-4 max-w-3xl mx-auto">
+
+                @csrf
+
+                <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
+
+                <input
+                    name="content"
+                    type="text"
+                    placeholder="add note…"
+                    class="bg-white border text-sm p-2 border-gray-400 rounded-l focus:outline-none focus:ring-0 focus:border-gray-800 focus:placeholder-transparent placeholder-gray-400">
+
+                <button
+                    type="submit"
+                    class="bg-gray-400 px-4 text-white rounded-r cursor-pointer text-sm">
+                    +
+                </button>
 
             </form>
 
