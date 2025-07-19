@@ -17,6 +17,9 @@ Route::post('/{nameslug}/edit-welcome', [UserController::class, 'updateWelcoming
 Route::get('/{nameslug}/edit-confirmation', [UserController::class, 'accessEditConfirmationMessage']);
 Route::post('/{nameslug}/edit-confirmation', [UserController::class, 'updateConfirmationMessage']);
 
+Route::get('/{nameslug}/edit-password', [UserController::class, 'accessEditPassword']);
+Route::post('/{nameslug}/edit-password', [UserController::class, 'updatePassword']);
+
 
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);

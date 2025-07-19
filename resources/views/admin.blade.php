@@ -101,6 +101,15 @@
     </form>
 
     <form
+        action="{{ url( '/' . $user->nameslug . '/edit-password') }}"
+        method="GET"
+        class="m-4">
+        @csrf
+        <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
+        <button class="direction-button">Edit my password</button>
+    </form>
+
+    <form
         action="/logout"
         method="POST"
         class="m-4">
