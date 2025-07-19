@@ -28,11 +28,11 @@
             </summary>
 
             <div class="flex justify-between">
-                <div class="font-light p-2">
-                    <p>{{$subscription['email']}}</p>
-                </div>
                 <div class="p-2 font-light">
                     <p>{{$subscription->created_at->translatedFormat('j F Y')}}</p>
+                </div>
+                <div class="font-light p-2">
+                    <p>{{$subscription['email']}}</p>
                 </div>
             </div>
             <div class="p-2">
