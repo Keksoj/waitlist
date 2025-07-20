@@ -8,7 +8,7 @@
         <p>{{ $user->welcoming_message }}</p>
     </section>
 
-
+    <x-errors />
 
     <!-- TODO: check out why the POST request is sent to /{nameslug}/subscribe and not to /subscribe -->
     <form action="subscribe" method="POST" class="px-4 my-10 max-w-3xl mx-auto space-y-6">

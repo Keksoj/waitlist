@@ -12,16 +12,7 @@
             <button>Log out</button>
         </form>
     @else
-        @if ($errors->any())
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                <ul class="list-dic pl-5 space-y-1">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
+        <x-errors />
 
         <div class="center-box-form">
             <h2 class="text-xl font-semibold text-center mb-10">Log in as {{ $user->name }}</h2>
