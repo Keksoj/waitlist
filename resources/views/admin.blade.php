@@ -5,10 +5,10 @@
 @auth
 <h1 class="top-h1">My waiting list</h1>
 
-<div class="my-5 max-w-3xl mx-auto space-y-6">
+<div class="my-8">
     @foreach($subscriptions as $subscription)
     @csrf
-    <details class="border border-gray-300 bg-blue-200 m-2">
+    <details class="border border-gray-300 bg-blue-200 my-2">
         <summary class="cursor-pointer p-2 list-none bg-blue-300">
             <div class="flex justify-between">
                 <div class="font-semibold">

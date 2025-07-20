@@ -10,7 +10,7 @@
     <title>@yield('title', 'Waiting list')</title>
 </head>
 
-<body class="min-h-screen bg-gray-50 flex flex-col items-center px-2">
+<body class="min-h-screen bg-gray-50 flex flex-col items-center px-4">
 
     <main class="w-full max-w-3xl flex-grow">
         @yield('content')

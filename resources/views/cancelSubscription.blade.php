@@ -23,7 +23,7 @@
 </div>
 @endif
 
-<div class="bg-blue-100 text-gray-800 rounded-xl shadow-md m-8 p-8 w-full max-w-sm">
+<div class="center-box-form">
     <h2 class="text-xl font-semibold text-center mb-10">Your deletion code</h2>
     <form action="/deletion-code" method="POST">
         @csrf

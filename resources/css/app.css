@@ -12,6 +12,9 @@
 
 }
 
+.center-box-form {
+    @apply bg-blue-100 text-gray-800 rounded-xl shadow-md mx-auto my-8 sm:my-20 p-8 w-full max-w-sm;
+}
 
 .small-paragraph {
     @apply px-4 max-w-3xl mx-auto space-y-6;

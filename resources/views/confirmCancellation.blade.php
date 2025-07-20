@@ -20,9 +20,9 @@
 </div>
 @endif
 
-<div class="bg-blue-100 text-gray-800 rounded-xl shadow-md m-8 p-8 w-full max-w-sm">
+<div class="center-box-form">
     <h2 class="text-xl font-semibold text-center mb-10">Confirm</h2>
-    <p class="small-paragraph">
+    <p class="small-paragraph mb-4">
         Are you sure to cancel the subscription made by <b>{{$subscription->name}}</b>?
     </p>
     <form action="/confirm-cancellation" method="POST">
