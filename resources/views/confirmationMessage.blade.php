@@ -30,16 +30,21 @@
 
 @section('footer')
 
-<form action="/logout" method="POST">
-    @csrf
-    <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
-    <button class="direction-button">Log out</button>
-</form>
+<div>
+    <form action="/logout" method="POST">
+        @csrf
+        <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
+        <button class="direction-button">Log out</button>
+    </form>
+</div>
 
-<form action="{{ url( '/' . $user->nameslug . '/admin') }}" method="GET">
-    @csrf
-    <button class="direction-button">Back to the admin page</button>
-</form>
+<div>
+    <form action="{{ url( '/' . $user->nameslug . '/admin') }}" method="GET">
+        @csrf
+        <button class="direction-button">Back to the admin page</button>
+    </form>
+</div>
+
 @endsection
 
 @else

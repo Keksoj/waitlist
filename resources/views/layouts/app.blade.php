@@ -16,7 +16,9 @@
         @yield('content')
     </main>
 
-    <footer class="w-full max-w-3xl mt-6 text-center">
-        @yield('footer')
+    <footer class="w-full max-w-3xl mt-6 text-center px-4 pb-4">
+        <div class="flex justify-between w-full gap-4">
+            @yield('footer')
+        </div>
     </footer>
 </body>
