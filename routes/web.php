@@ -78,9 +78,10 @@ Route::post('/{nameslug}/create-note', [SubscriptionController::class, 'createNo
 
 Route::delete('/subscription/{subscription}', [SubscriptionController::class, 'deleteSubscription']);
 
-Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
 
 Route::get('/{nameslug}/login', [UserController::class, 'accessLogin']);
 
 
 require __DIR__.'/auth.php';
+
+Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
