@@ -72,6 +72,11 @@
         </div>
     </form>
 
+    <a
+        href="/cancel-subscription"
+        class="inline-block bg-purple-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition">
+        Click here to cancel a subscription with a deletion code.
+    </a>
 
 </body>
 

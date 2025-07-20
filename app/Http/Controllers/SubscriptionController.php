@@ -48,9 +48,11 @@ class SubscriptionController extends Controller
         );
     }
 
+    /**
+     * From a user perspective
+     */
     public function deleteSubscription(Subscription $subscription)
     {
-
         if (!Auth::check()) {
             return redirect('/');
         }
@@ -63,6 +65,38 @@ class SubscriptionController extends Controller
 
         return redirect('/' . $user->nameslug . '/admin');
     }
+
+    /**
+     * From a subscriber perspective
+     */
+    public function requestDeletion(Request $request)
+    {
+        $incomingInput = $request->validate([
+            'deletion_code' => ['required', 'size:7', 'alpha']
+        ]);
+
+        $subscription = Subscription::where('deletion_code', $incomingInput['deletion_code'])->first();
+
+        if ($subscription) {
+            return view('confirmCancellation', ['subscription' => $subscription]);
+        }
+
+        return back()->withErrors(['not found', 'This subscription is not to be found. Maybe it has been deleted already']);
+    }
+
+    public function deleteSubscriptionWithCode(Request $request)
+    {
+        $incomingInput = $request->validate([
+            'deletion_code' => ['required', 'size:7', 'alpha']
+        ]);
+
+        Subscription::where('deletion_code', $incomingInput['deletion_code'])->delete();
+
+        return redirect('cancel-subscription')
+            ->with('success', 'Subscription cancelled successfully. All your data has been removed from the database');
+    }
+
+
 
     public function createNote(Request $request)
     {

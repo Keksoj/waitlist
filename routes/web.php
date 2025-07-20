@@ -8,7 +8,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/cancel-subscription', function() { return view('cancelSubscription'); } );
+Route::post('/deletion-code', [SubscriptionController::class, 'requestDeletion']);
+Route::delete('/confirm-cancellation', [SubscriptionController::class, 'deleteSubscriptionWithCode']);
+
+
 Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
+
 Route::get('/{nameslug}/admin', [UserController::class, 'accessAdminPage']);
 
 Route::get('/{nameslug}/edit-welcome', [UserController::class, 'accessEditWelcomingMessage']);
