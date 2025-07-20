@@ -1,61 +1,48 @@
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Admin</title>
-</head>
+@section('content')
+@auth
+<h1 class="top-h1">My welcome message</h1>
 
-<body class="flex-body">
+<section class="user-paragraph">
+    <p>“{{$user->welcoming_message}}”</p>
+</section>
 
-    <main class="main-content">
-        @auth
-        <h1 class="top-h1">My welcome message</h1>
+<div class="small-paragraph">
+    <p>Edit your confirmation message below:</p>
+</div>
 
-        <section class="user-paragraph">
-            <p>“{{$user->welcoming_message}}”</p>
-        </section>
+<form
+    action="{{ url( '/' . $user->nameslug . '/edit-welcome') }}"
+    method="POST"
+    class="px-4 my-10 max-w-3xl mx-auto space-y-6">
+    @csrf
 
-        <div class="small-paragraph">
-            <p>Edit your confirmation message below:</p>
-        </div>
+    <textarea name="welcoming_message" rows="9" class="input-style">{{$user->welcoming_message}}
+    </textarea>
 
-        <form
-            action="{{ url( '/' . $user->nameslug . '/edit-welcome') }}"
-            method="POST"
-            class="px-4 my-10 max-w-3xl mx-auto space-y-6">
-            @csrf
+    <button class="validation-button">update</button>
+</form>
 
-            <textarea name="welcoming_message" rows="9" class="input-style">{{$user->welcoming_message}}
-            </textarea>
+@endsection
 
-            <button class="validation-button">update</button>
-        </form>
+@section('footer')
+<form action="/logout" method="POST">
+    @csrf
+    <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
+    <button class="direction-button">Log out</button>
+</form>
 
-    </main>
+<form action="{{ url( '/' . $user->nameslug . '/admin') }}" method="GET">
+    @csrf
 
-    <div class="footer-buttons">
-        <form action="/logout" method="POST">
-            @csrf
-            <input type="hidden" name="nameslug" value="{{$user->nameslug}}">
-            <button class="direction-button">Log out</button>
-        </form>
+    <button class="direction-button">Back to the admin page</button>
+</form>
 
-        <form action="{{ url( '/' . $user->nameslug . '/admin') }}" method="GET">
-            @csrf
+@else
 
-            <button class="direction-button">Back to the admin page</button>
-        </form>
+<p>Something is wrong, you should not be able to view this page without being logged in.</p>
 
-    </div>
-    @else
+@endauth
 
-    <p>Something is wrong, you should not be able to view this page without being logged in.</p>
-
-    @endauth
-
-</body>
-
-</html>
+@endsection
