@@ -1,5 +1,5 @@
 @props([
-    'type' => 'info', // success, error, info, warning
+    'type' => 'info', // success, error, info, warning, etc. Defaults to "info"
     'message' => '',
 ])
 

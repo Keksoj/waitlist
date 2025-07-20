@@ -38,15 +38,6 @@ class UserController extends Controller
         }
     }
 
-    public function accessEditWelcomingMessage()
-    {
-        if (Auth::check()) {
-            return view('welcomingMessage', ['user' => Auth::user()]);
-        } else {
-            abort(403, "Who are you? How did you get here?");
-        }
-    }
-
     public function updateWelcomingMessage(String $nameslug, Request $request)
     {
         $incomingFields = $request->validate([

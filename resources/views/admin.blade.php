@@ -63,11 +63,9 @@
 
 
 
-        <form action="{{ url('/' . $user->nameslug . '/edit-welcome') }}" method="GET" class="m-4">
-            @csrf
-            <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
-            <button class="direction-button">Edit my welcome message</button>
-        </form>
+        <a href="{{ route('user.edit-welcome') }}" class="direction-button m-4">
+            Edit my welcome message
+        </a>
 
         <form action="{{ url('/' . $user->nameslug . '/edit-confirmation') }}" method="GET" class="m-4">
             @csrf
