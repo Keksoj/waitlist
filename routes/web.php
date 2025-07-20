@@ -14,6 +14,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-welcome', function () {
         return view('welcomingMessage', ['user' => Auth::user()]);
     })->name('user.edit-welcome');
+    
+    Route::post('/edit-welcome', [UserController::class, 'updateWelcomingMessage'])->name('user.update-welcome');
 });
 
 Route::get('/cancel-subscription', function () {
@@ -28,7 +30,6 @@ Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
 Route::get('/{nameslug}/admin', [UserController::class, 'accessAdminPage']);
 
 
-Route::post('/{nameslug}/edit-welcome', [UserController::class, 'updateWelcomingMessage'])->name('user.update-welcome');
 
 Route::get('/{nameslug}/edit-confirmation', [UserController::class, 'accessEditConfirmationMessage']);
 Route::post('/{nameslug}/edit-confirmation', [UserController::class, 'updateConfirmationMessage']);

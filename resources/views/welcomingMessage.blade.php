@@ -12,12 +12,12 @@
             <p>Edit your confirmation message below:</p>
         </div>
 
-        <form action="{{ url('/' . $user->nameslug . '/edit-welcome') }}" method="POST"
-            class="px-4 my-10 max-w-3xl mx-auto space-y-6">
+        <form action="{{ route('user.update-welcome') }}" method="POST" class="px-4 my-10 max-w-3xl mx-auto space-y-6">
             @csrf
 
-            <textarea name="welcoming_message" rows="9" class="input-style">{{ $user->welcoming_message }}
-    </textarea>
+            <textarea name="welcoming_message" rows="9" class="input-style">
+                {{ $user->welcoming_message }}
+            </textarea>
 
             <button class="validation-button">update</button>
         </form>
