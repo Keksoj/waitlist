@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Subscription;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubscriptionController;
 
@@ -14,8 +14,33 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-welcome', function () {
         return view('welcomingMessage', ['user' => Auth::user()]);
     })->name('user.edit-welcome');
-    
+
     Route::post('/edit-welcome', [UserController::class, 'updateWelcomingMessage'])->name('user.update-welcome');
+
+    Route::get('/admin', function () {
+        $user = Auth::user();
+        $subscriptions = Subscription::with('notes')->where('user_id', $user->id)->get();
+        return view('admin', ['user' => $user, 'subscriptions' => $subscriptions]);
+    })->name('user.admin');
+
+
+    Route::get(
+        '/edit-confirmation',
+        function () {
+            return view('confirmationMessage', ['user' => Auth::user()]);
+        }
+    )->name('user.edit-confirmation');
+
+    Route::post('/edit-confirmation', [UserController::class, 'updateConfirmationMessage'])->name('user.update-confirmation');
+
+    Route::get(
+        '/edit-password',
+        function () {
+            return view('editPassword', ['user' => Auth::user()]);
+        }
+    )->name('user.edit-password');
+
+    Route::post('/edit-password', [UserController::class, 'updatePassword']);
 });
 
 Route::get('/cancel-subscription', function () {
@@ -23,19 +48,6 @@ Route::get('/cancel-subscription', function () {
 });
 Route::post('/deletion-code', [SubscriptionController::class, 'requestDeletion']);
 Route::delete('/confirm-cancellation', [SubscriptionController::class, 'deleteSubscriptionWithCode']);
-
-
-Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
-
-Route::get('/{nameslug}/admin', [UserController::class, 'accessAdminPage']);
-
-
-
-Route::get('/{nameslug}/edit-confirmation', [UserController::class, 'accessEditConfirmationMessage']);
-Route::post('/{nameslug}/edit-confirmation', [UserController::class, 'updateConfirmationMessage']);
-
-Route::get('/{nameslug}/edit-password', [UserController::class, 'accessEditPassword']);
-Route::post('/{nameslug}/edit-password', [UserController::class, 'updatePassword']);
 
 
 Route::post('/logout', [UserController::class, 'logout']);
@@ -47,3 +59,7 @@ Route::post('/{nameslug}/subscribe', [SubscriptionController::class, 'createSubs
 Route::post('/{nameslug}/create-note', [SubscriptionController::class, 'createNote']);
 
 Route::delete('/subscription/{subscription}', [SubscriptionController::class, 'deleteSubscription']);
+
+Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
+
+Route::get('/{nameslug}/login', [UserController::class, 'accessLogin']);

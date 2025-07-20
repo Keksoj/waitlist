@@ -7,7 +7,7 @@
 
         <div class="center-box-form">
             <h2 class="text-xl font-semibold text-center mb-10">Edit my password</h2>
-            <form action="{{ url('/' . $user->nameslug . '/edit-password') }}" method="POST">
+            <form action="{{ route('user.edit-password') }}" method="POST">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 First, type in your current password:
@@ -35,13 +35,12 @@
         <button class="direction-button">Log out</button>
     </form>
 
-    <form action="{{ url('/' . $user->nameslug . '/admin') }}" method="GET">
-        @csrf
+    <a href="{{ route('user.admin') }}" class="direction-button">
+        Back to the admin page
+    </a>
+@endsection
 
-        <button class="direction-button">Back to the admin page</button>
-    </form>
 @else
     <p>Something is wrong, you should not be able to view this page without being logged in.</p>
 
 @endauth
-@endsection

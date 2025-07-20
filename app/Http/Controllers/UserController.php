@@ -21,23 +21,6 @@ class UserController extends Controller
         return view('subscriptionForm', ['user' => $user]);
     }
 
-    public function accessAdminPage(String $nameslug, Request $request)
-    {
-        $user = User::where('nameslug', $nameslug)->first();
-
-        if (!$user) {
-            abort(404, 'This practitioner does not exist');
-        }
-
-        if (Auth::check()) {
-            $subscriptions = Subscription::with('notes')->where('user_id', $user->id)->get();
-            return view('admin', ['user' => $user, 'subscriptions' => $subscriptions]);
-        } else {
-            $subscriptions = [];
-            return view('login', ['user' => $user]);
-        }
-    }
-
     public function updateWelcomingMessage(Request $request)
     {
         $incomingFields = $request->validate([
@@ -51,18 +34,10 @@ class UserController extends Controller
         return view('welcomingMessage', ['user' => $user]);
     }
 
-    public function accessEditPassword()
-    {
-        if (Auth::check()) {
-            return view('editPassword', ['user' => Auth::user()]);
-        } else {
-            abort(403, "Who are you? How did you get here?");
-        }
-    }
+
 
     public function updatePassword(Request $request)
     {
-
         $user = $request->user();
 
         $validatedInput = $request->validate([
@@ -81,14 +56,7 @@ class UserController extends Controller
         return back()->with('success', 'Password updated successfully!');
     }
 
-    public function accessEditConfirmationMessage()
-    {
-        if (Auth::check()) {
-            return view('confirmationMessage', ['user' => Auth::user()]);
-        } else {
-            abort(403, "Who are you? How did you get here?");
-        }
-    }
+
 
     public function updateConfirmationMessage(String $nameslug, Request $request)
     {
@@ -107,6 +75,16 @@ class UserController extends Controller
         return view('confirmationMessage', ['user' => $user]);
     }
 
+    public function accessLogin(string $nameslug)
+    {
+        $user = User::where('nameslug', $nameslug)->first();
+
+        if ($user) {
+            return view('login', ['user' => $user]);
+        } else {
+            abort(404, 'User {$nameslug} not found');
+        }
+    }
 
     public function login(Request $request)
     {
@@ -124,7 +102,7 @@ class UserController extends Controller
             return back()->withErrors(['password', 'not recognized']);
         }
 
-        return redirect('/' . Auth::user()->nameslug . '/admin');
+        return redirect('/admin');
     }
 
     public function logout(Request $request)
@@ -135,6 +113,6 @@ class UserController extends Controller
         $nameslug = $incomingFields['nameslug'];
 
         Auth::logout();
-        return redirect('/' . $nameslug . '/admin');
+        return redirect('/' . $nameslug . '/login');
     }
 }

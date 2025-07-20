@@ -30,11 +30,9 @@
         <button class="direction-button">Log out</button>
     </form>
 
-    <form action="{{ url('/' . $user->nameslug . '/admin') }}" method="GET">
-        @csrf
-
-        <button class="direction-button">Back to the admin page</button>
-    </form>
+    <a href="{{ route('user.admin') }}" class="direction-button">
+        Back to the admin page
+    </a>
 @else
     <p>Something is wrong, you should not be able to view this page without being logged in.</p>
 

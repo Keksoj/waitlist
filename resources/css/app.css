@@ -37,5 +37,5 @@
 }
 
 .direction-button {
-    @apply bg-gray-300 px-4 py-2 text-black rounded font-medium cursor-pointer; 
+    @apply border border-gray-300 bg-gray-300 px-4 py-2 text-black rounded font-medium cursor-pointer inline-block hover:border hover:border-teal-700; 
 }

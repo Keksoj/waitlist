@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Waiting list</h1>
+    <h1 class="top-h1">Waiting list</h1>
 
-    <p class="text-gray-500 bg-amber-200">Nothing to see here, go check out your therapist's page.</p>
+    <div class="center-box-form">
+        <p class="text-xl">Nothing to see here, go check out your therapist's page.</p>
+    </div>
 @endsection

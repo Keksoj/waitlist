@@ -34,7 +34,7 @@ class SubscriptionController extends Controller
         $subscription = Subscription::create($incomingFields);
 
         if ($subscription == null) {
-            abort('500');
+            return back()->withErrors(['failed', 'Could not create subscription']);
         }
 
         $confirmation_message = User::where('id', $subscription->user_id)->get()->first()?->confirmation_message;

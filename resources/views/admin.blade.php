@@ -67,17 +67,13 @@
             Edit my welcome message
         </a>
 
-        <form action="{{ url('/' . $user->nameslug . '/edit-confirmation') }}" method="GET" class="m-4">
-            @csrf
-            <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
-            <button class="direction-button">Edit my confirmation message</button>
-        </form>
+        <a href="{{ route('user.edit-confirmation') }}" class="direction-button m-4">
+            Edit my confirmation message
+        </a>
 
-        <form action="{{ url('/' . $user->nameslug . '/edit-password') }}" method="GET" class="m-4">
-            @csrf
-            <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
-            <button class="direction-button">Edit my password</button>
-        </form>
+        <a href="{{ route('user.edit-password') }}" class="direction-button m-4">
+            Edit my password
+        </a>
     @endsection
 
 @section('footer')
