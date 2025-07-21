@@ -2,14 +2,14 @@
 
 @section('content')
     @auth
-        <h1 class="top-h1">My welcome message</h1>
+        <h1 class="top-h1">{{ __('waitinglist.my-welcoming') }}</h1>
 
         <section class="user-paragraph">
             <p>“{{ $user->welcoming_message }}”</p>
         </section>
 
         <div class="small-paragraph">
-            <p>Edit your confirmation message below:</p>
+            <p>{{ __('waitinglist.edit-your-welcoming-message') }}:</p>
         </div>
 
         <form action="{{ route('user.update-welcome') }}" method="POST" class="px-4 my-10 max-w-3xl mx-auto space-y-6">
@@ -19,7 +19,9 @@
                 {{ $user->welcoming_message }}
             </textarea>
 
-            <button class="validation-button">update</button>
+            <button class="validation-button">
+                {{ __('actions.update') }}
+            </button>
         </form>
     @endsection
 
@@ -27,14 +29,17 @@
     <form action="/logout" method="POST">
         @csrf
         <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
-        <button class="direction-button">Log out</button>
+        <button class="direction-button">
+            {{ __('actions.log_out') }}
+        </button>
     </form>
 
     <a href="{{ route('user.admin') }}" class="direction-button">
-        Back to the admin page
+        {{ __('waitinglist.back-to-admin') }}
     </a>
+@endsection
+
 @else
-    <p>Something is wrong, you should not be able to view this page without being logged in.</p>
+<p>{{ __('waitinglist.you-should-not-see-this') }}</p>
 
 @endauth
-@endsection
