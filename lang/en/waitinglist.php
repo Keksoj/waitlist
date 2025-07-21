@@ -12,6 +12,7 @@ return [
     'click-here-to-cancel' => "Click here to cancel a subscription with a deletion code",
     'subscribe' => 'Subscribe',
     'could-not-create-subscription' => 'Could not create this subscription',
+    'validate-human' => "Validate that you are human, and you're good to send your subscription!",
 
     // cancel subscription
     'cancel-title' => "Cancel subscription",

@@ -12,6 +12,7 @@ return [
     'click-here-to-cancel' => "Cliquez ici pour supprimer une inscription déjà faite",
     'subscribe' => "S'inscrire",
     'could-not-create-subscription' => 'Impossible de créer cette inscription',
+    'validate-human' => "Cliquez que vous êtes humain, et vous pouvez envoyer votre inscription !",
 
     // cancel subscription
     'cancel-title' => "Annuler une inscription",
