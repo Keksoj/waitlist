@@ -2,7 +2,7 @@
 
 @section('content')
     @auth
-        <h1 class="top-h1">My waiting list</h1>
+        <h1 class="top-h1">{{ __('waitinglist.my-waiting-list') }}</h1>
 
         <div class="my-8">
             @foreach ($subscriptions as $subscription)
@@ -43,7 +43,7 @@
 
                         <input type="hidden" name="subscription_id" value="{{ $subscription->id }}">
 
-                        <input name="content" type="text" placeholder="add note…"
+                        <input name="content" type="text" placeholder="{{ __('waitinglist.add-note') }}"
                             class="bg-white border text-sm p-2 border-gray-400 rounded-l focus:outline-none focus:ring-0 focus:border-gray-800 focus:placeholder-transparent placeholder-gray-400">
 
                         <button type="submit" class="bg-gray-400 px-4 text-white rounded-r cursor-pointer text-sm">
@@ -55,7 +55,9 @@
                     <form action="/subscription/{{ $subscription->id }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="cursor-pointer text-white m-2 p-2 rounded bg-red-500">Delete</button>
+                        <button class="cursor-pointer text-white m-2 p-2 rounded bg-red-500">
+                            {{ __('actions.delete') }}
+                        </button>
                     </form>
                 </details>
             @endforeach
@@ -64,15 +66,15 @@
 
 
         <a href="{{ route('user.edit-welcome') }}" class="direction-button m-4">
-            Edit my welcome message
+            {{ __('waitinglist.edit-my-welcome') }}
         </a>
 
         <a href="{{ route('user.edit-confirmation') }}" class="direction-button m-4">
-            Edit my confirmation message
+            {{ __('waitinglist.edit-my-confirmation') }}
         </a>
 
         <a href="{{ route('user.edit-password') }}" class="direction-button m-4">
-            Edit my password
+            {{ __('waitinglist.edit-my-password') }}
         </a>
     @endsection
 
@@ -80,10 +82,10 @@
     <form action="/logout" method="POST" class="m-4">
         @csrf
         <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
-        <button class="direction-button">Log out</button>
+        <button class="direction-button">{{ __('actions.log_out') }}</button>
     </form>
 @endsection
 @else
-<p>Something is wrong, you should not be able to view this page without being logged in.</p>
+<p>{{ __('waitinglist.you-should-not-see-this') }}</p>
 
 @endauth
