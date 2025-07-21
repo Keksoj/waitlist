@@ -9,8 +9,20 @@ return [
     'your-phone-number' => "Votre téléphone",
     'your-email' => "Votre email (facultatif)",
     'commentary' => "Ce qui vous amène (facultatif)",
-    'click-here-to-cancel'=> "Cliquez ici pour supprimer une inscription déjà faite",
+    'click-here-to-cancel' => "Cliquez ici pour supprimer une inscription déjà faite",
     'subscribe' => "S'inscrire",
+    'could-not-create-subscription' => 'Impossible de créer cette inscription',
+
+    // cancel subscription
+    'cancel-title' => "Annuler une inscription",
+    'cancel-your-subscription' => "Vous pouvez annuler votre inscription à la liste d'attente, en fournissant le code qui vous a été donné lors de votre inscription.",
+    'your-deletion-code' => "Votre code de suppression",
+    'subscription-not-found' => "Cette inscription n'est pas trouvable. Elle a peut-être déjà été supprimée.",
+    'cancel-success' => "Inscription supprimée. Les coordonnées associées ont été effacées de la base de données.",
+
+    // confirm cancellation
+    'confirm-cancel-title' => "Confirmer la désinscription",
+    'are-you-sure-to-cancel' => "Êtes-vous sûr·e de désinscrire :name de la liste d'attente ?",
 
     // login
     'nothing-to-see' => "Rien à voir ici, consultez la page de votre thérapeute.",

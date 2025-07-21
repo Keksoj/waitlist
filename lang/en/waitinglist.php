@@ -10,7 +10,19 @@ return [
     'your-email' => "Your email (optional)",
     'commentary' => "Commentary (optional)",
     'click-here-to-cancel' => "Click here to cancel a subscription with a deletion code",
-    'subscribe' => 'subscribe',
+    'subscribe' => 'Subscribe',
+    'could-not-create-subscription' => 'Could not create this subscription',
+
+    // cancel subscription
+    'cancel-title' => "Cancel subscription",
+    'cancel-your-subscription' => "Cancel your subscription by providing the deletion code that was given to you when you first subscribed.",
+    'your-deletion-code' => "Your deletion code",
+    'subscription-not-found' => "This subscription is not to be found. Maybe it has been deleted already",
+    'cancel-success' => "Subscription cancelled successfully. All your data has been removed from the database",
+
+    // confirm cancellation
+    'confirm-cancel-title' => "confirm cancellation",
+    'are-you-sure-to-cancel' => "Are you sure to cancel the subscription made by :name?",
 
     // login
     'nothing-to-see' => "Nothing to see here, go check out your therapist's page.",

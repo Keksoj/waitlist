@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="top-h1">Cancel subscription</h1>
+    <h1 class="top-h1">{{ __('waitinglist.cancel-title') }}</h1>
 
     <div class="small-paragraph">
-        <p>Cancel your subscription by providing the deletion code that was given to you when you first subscribed.</p>
+        <p>{{ __('waitinglist.cancel-your-subscription') }}</p>
     </div>
 
     @if (session('success'))
@@ -16,7 +16,7 @@
     <x-errors />
 
     <div class="center-box-form">
-        <h2 class="text-xl font-semibold text-center mb-10">Your deletion code</h2>
+        <h2 class="text-xl font-semibold text-center mb-10">{{ __('waitinglist.your-deletion-code') }}</h2>
         <form action="/deletion-code" method="POST">
             @csrf
             <input name="deletion_code" placeholder="ex: GABXDPE…"
