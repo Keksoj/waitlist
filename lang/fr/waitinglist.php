@@ -4,6 +4,14 @@ return [
     'app-title' => "Liste d'attente",
     'back-to-admin' => "Retourner à la liste d'attente",
 
+    // subscription
+    'your-full-name' => "Votre nom complet",
+    'your-phone-number' => "Votre téléphone",
+    'your-email' => "Votre email (facultatif)",
+    'commentary' => "Ce qui vous amène (facultatif)",
+    'click-here-to-cancel'=> "Cliquez ici pour supprimer une inscription déjà faite",
+    'subscribe' => "S'inscrire",
+
     // login
     'nothing-to-see' => "Rien à voir ici, consultez la page de votre thérapeute.",
     'you-should-not-see-this' => "Vous n'êtes pas sensé·e voir cette page sans être connecté·e, comment êtes-vous arrivé·e ici?",

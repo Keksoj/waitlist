@@ -17,40 +17,40 @@
 
         <div class="flex space-x-4">
             <div class="w-1/2">
-                <label for="name">Your full name</label>
+                <label for="name">{{ __('waitinglist.your-full-name') }}</label>
                 <input name="name" type="text" placeholder="ex: Christian Blinker…" class="input-style font-bold">
             </div>
 
             <div class="w-1/2">
-                <label for="telephone">Your phone number</label>
+                <label for="telephone">{{ __('waitinglist.your-phone-number') }}</label>
                 <input name="telephone" type="text" placeholder="ex: 06 …" class="input-style font-bold">
             </div>
         </div>
 
         <div>
-            <label for="email">Your email (optional)</label>
+            <label for="email">{{ __('waitinglist.your-email') }}</label>
             <input name="email" type="text" placeholder="email (optional)"
                 class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium">
         </div>
 
         <div>
-            <label for="commentary">Commentary (optional)</label>
-            <textarea name="commentary" placeholder="what brings you here"
-                class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium">
+            <label for="commentary">{{ __('waitinglist.commentary') }}<label>
+                    <textarea name="commentary" placeholder="what brings you here"
+                        class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium">
                 </textarea>
         </div>
         <!-- TODO add a I am not a robot captcha-->
 
         <div class="px-8 py-6 flex justify-between">
             <button class="validation-button">
-                Subscribe
+                {{ __('waitinglist.subscribe') }}
             </button>
         </div>
     </form>
 
     <a href="/cancel-subscription"
         class="inline-block bg-purple-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition">
-        Click here to cancel a subscription with a deletion code.
+        {{ __('waitinglist.click-here-to-cancel') }}
     </a>
 
 @section('content')

@@ -4,6 +4,14 @@ return [
     'app-title' => 'Waiting list',
     'back-to-admin' => 'Back to the admin page',
 
+    // subscription
+    'your-full-name' => "Your full name",
+    'your-phone-number' => "Your phone number",
+    'your-email' => "Your email (optional)",
+    'commentary' => "Commentary (optional)",
+    'click-here-to-cancel' => "Click here to cancel a subscription with a deletion code",
+    'subscribe' => 'subscribe',
+
     // login
     'nothing-to-see' => "Nothing to see here, go check out your therapist's page.",
     'you-should-not-see-this' => "You shouldn't be able to see this page without being logged in.",
