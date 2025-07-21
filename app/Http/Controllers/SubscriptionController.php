@@ -34,7 +34,7 @@ class SubscriptionController extends Controller
         $subscription = Subscription::create($incomingFields);
 
         if ($subscription == null) {
-            return back()->withErrors(['failed', 'Could not create subscription']);
+            return back()->withErrors(['failed', __('could-not-create-subscription')]);
         }
 
         $confirmation_message = User::where('id', $subscription->user_id)->get()->first()?->confirmation_message;
@@ -81,7 +81,7 @@ class SubscriptionController extends Controller
             return view('confirmCancellation', ['subscription' => $subscription]);
         }
 
-        return back()->withErrors(['not found', 'This subscription is not to be found. Maybe it has been deleted already']);
+        return back()->withErrors(['Not found', __('waitinglist.subscription-not-found')]);
     }
 
     public function deleteSubscriptionWithCode(Request $request)
@@ -92,8 +92,7 @@ class SubscriptionController extends Controller
 
         Subscription::where('deletion_code', $incomingInput['deletion_code'])->delete();
 
-        return redirect('cancel-subscription')
-            ->with('success', 'Subscription cancelled successfully. All your data has been removed from the database');
+        return redirect('cancel-subscription')->with('success', __('waitinglist.cancel-success'));
     }
 
 
