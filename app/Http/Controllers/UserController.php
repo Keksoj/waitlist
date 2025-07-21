@@ -70,7 +70,7 @@ class UserController extends Controller
             abort(401, "Unauthorized. Who are you? How did you even get here?");
         }
 
-        $user->update($incomingFields);
+        User::update($incomingFields);
 
         return view('confirmationMessage', ['user' => $user]);
     }

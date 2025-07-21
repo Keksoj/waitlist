@@ -12,7 +12,8 @@
         <p class="small-paragraph mb-4">
             {{ __('waitinglist.are-you-sure-to-cancel', ['name' => $subscription->name]) }}
         </p>
-        <form action="/confirm-cancellation" method="POST">
+        
+        <form action="{{ route('guest.confirm-cancellation') }}" method="POST">
             @csrf
             @method('DELETE')
             <input type='hidden' name="deletion_code" value="{{ $subscription->deletion_code }}">

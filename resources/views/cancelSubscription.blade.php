@@ -17,9 +17,9 @@
 
     <div class="center-box-form">
         <h2 class="text-xl font-semibold text-center mb-10">{{ __('waitinglist.your-deletion-code') }}</h2>
-        <form action="/deletion-code" method="POST">
+        <form action="{{ route('guest.request-cancellation') }}" method="POST">
             @csrf
-            <input name="deletion_code" placeholder="ex: GABXDPE…"
+            <input name="deletion_code" placeholder="ex: GABXDPEU"
                 class="w-full p-2 mb-4 border bg-white border-gray-300 rounded focus:placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-400">
             <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
                 send

@@ -11,7 +11,8 @@
     <x-errors />
 
     <!-- TODO: check out why the POST request is sent to /{nameslug}/subscribe and not to /subscribe -->
-    <form action="subscribe" method="POST" class="px-4 my-10 max-w-3xl mx-auto space-y-6">
+    <form action="{{ route('guest.subscribe', ['nameslug' => $user->nameslug]) }}" method="POST"
+        class="px-4 my-10 max-w-3xl mx-auto space-y-6">
         @csrf
         <input type="hidden" name="user_id" value="{{ $user->id }}">
 
@@ -48,8 +49,9 @@
         </div>
     </form>
 
-    <a href="/cancel-subscription"
-        class="inline-block bg-purple-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition">
+    <a href="{{ route('guest.cancel-subscription') }}"
+        class="inline-block bg-purple-500 text-white font-semibold
+        py-2 px-4 rounded hover:bg-blue-600 transition">
         {{ __('waitinglist.click-here-to-cancel') }}
     </a>
 

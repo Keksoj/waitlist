@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
         }
     )->name('user.edit-confirmation');
 
-    Route::post('/edit-confirmation', [UserController::class, 'updateConfirmationMessage'])->name('user.update-confirmation');
+    Route::post(
+        '/edit-confirmation',
+        [UserController::class, 'updateConfirmationMessage']
+    )->name('user.update-confirmation');
 
     Route::get(
         '/edit-password',
@@ -40,26 +43,29 @@ Route::middleware('auth')->group(function () {
         }
     )->name('user.edit-password');
 
-    Route::post('/edit-password', [UserController::class, 'updatePassword']);
+    Route::post('/edit-password', [UserController::class, 'updatePassword'])->name('user.update-password');
+    Route::post('/create-note', [SubscriptionController::class, 'createNote'])->name('user.create-note');
+
+    Route::delete('/subscription/{subscription}', [SubscriptionController::class, 'deleteSubscription'])->name('user.delete-subscription');
 });
+
+Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
+
+Route::get('/login', [UserController::class, 'accessLogin'])->name('user.login');
+Route::post('/login', [UserController::class, 'login'])->name('user.login');
 
 Route::get('/cancel-subscription', function () {
     return view('cancelSubscription');
-});
-Route::post('/deletion-code', [SubscriptionController::class, 'requestDeletion']);
-Route::delete('/confirm-cancellation', [SubscriptionController::class, 'deleteSubscriptionWithCode']);
+})->name('guest.cancel-subscription');
+
+Route::post('/request-cancellation', [SubscriptionController::class, 'requestCancellation'])->name('guest.request-cancellation');
+Route::delete('/confirm-cancellation', [SubscriptionController::class, 'confirmCancellation'])->name('guest.confirm-cancellation');
 
 
-Route::post('/logout', [UserController::class, 'logout']);
-Route::post('/login', [UserController::class, 'login']);
 
-Route::post('/subscribe', [SubscriptionController::class, 'createSubscription']);
-Route::post('/{nameslug}/subscribe', [SubscriptionController::class, 'createSubscription']);
-
-Route::post('/{nameslug}/create-note', [SubscriptionController::class, 'createNote']);
-
-Route::delete('/subscription/{subscription}', [SubscriptionController::class, 'deleteSubscription']);
+Route::post('/subscribe', [SubscriptionController::class, 'createSubscription'])->name('guest.subscribe');
 
 Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
 
+Route::get('/{nameslug}/admin', [UserController::class, 'accessLogin']);
 Route::get('/{nameslug}/login', [UserController::class, 'accessLogin']);

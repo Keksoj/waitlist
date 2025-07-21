@@ -9,7 +9,7 @@
             <h2 class="text-xl font-semibold text-center mb-10">
                 {{ __('waitinglist.my-password') }}
             </h2>
-            <form action="{{ route('user.edit-password') }}" method="POST">
+            <form action="{{ route('user.update-password') }}" method="POST">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
 
@@ -33,7 +33,7 @@
 
 
 @section('footer')
-    <form action="/logout" method="POST">
+    <form action="{{ route('user.logout') }}" method="POST">
         @csrf
         <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
         <button class="direction-button">

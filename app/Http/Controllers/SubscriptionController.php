@@ -63,13 +63,13 @@ class SubscriptionController extends Controller
             $subscription->delete();
         }
 
-        return redirect('/' . $user->nameslug . '/admin');
+        return back();
     }
 
     /**
      * From a subscriber perspective
      */
-    public function requestDeletion(Request $request)
+    public function requestCancellation(Request $request)
     {
         $incomingInput = $request->validate([
             'deletion_code' => ['required', 'size:7', 'alpha']
@@ -84,7 +84,7 @@ class SubscriptionController extends Controller
         return back()->withErrors(['Not found', __('waitinglist.subscription-not-found')]);
     }
 
-    public function deleteSubscriptionWithCode(Request $request)
+    public function confirmCancellation(Request $request)
     {
         $incomingInput = $request->validate([
             'deletion_code' => ['required', 'size:7', 'alpha']
@@ -115,7 +115,7 @@ class SubscriptionController extends Controller
 
         $subscription->notes()->create($incomingFields);
 
-        return redirect("/{$user->nameslug}/admin");
+        return back();
     }
 }
 

@@ -37,7 +37,8 @@
                         </div>
                     @endforeach
 
-                    <form action="create-note" method="POST" class="flex items-stretch px-2 my-4 max-w-3xl mx-auto">
+                    <form action="{{ route('user.create-note') }}" method="POST"
+                        class="flex items-stretch px-2 my-4 max-w-3xl mx-auto">
 
                         @csrf
 
@@ -52,7 +53,8 @@
 
                     </form>
 
-                    <form action="/subscription/{{ $subscription->id }}" method="POST">
+                    <form action="{{ route('user.delete-subscription', ['subscription' => $subscription->id]) }}"
+                        method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="cursor-pointer text-white m-2 p-2 rounded bg-red-500">
@@ -79,7 +81,7 @@
     @endsection
 
 @section('footer')
-    <form action="/logout" method="POST" class="m-4">
+    <form action="{{ route('user.logout') }}" method="POST" class="m-4">
         @csrf
         <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
         <button class="direction-button">{{ __('actions.log_out') }}</button>

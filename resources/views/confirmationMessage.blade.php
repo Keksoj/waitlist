@@ -26,7 +26,7 @@
 
 
 @section('footer')
-    <form action="/logout" method="POST">
+    <form action="{{ route('user.logout') }}" method="POST">
         @csrf
         <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
         <button class="direction-button">

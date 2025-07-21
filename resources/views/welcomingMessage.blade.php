@@ -15,8 +15,7 @@
         <form action="{{ route('user.update-welcome') }}" method="POST" class="px-4 my-10 max-w-3xl mx-auto space-y-6">
             @csrf
 
-            <textarea name="welcoming_message" rows="9" class="input-style">
-                {{ $user->welcoming_message }}
+            <textarea name="welcoming_message" rows="9" class="input-style">{{ $user->welcoming_message }}
             </textarea>
 
             <button class="validation-button">
@@ -26,7 +25,7 @@
     @endsection
 
 @section('footer')
-    <form action="/logout" method="POST">
+    <form action="{{ route('user.logout') }}" method="POST">
         @csrf
         <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
         <button class="direction-button">

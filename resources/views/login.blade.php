@@ -7,7 +7,7 @@
         <div class="center-box-form">
             <p class="small-paragraph">{{ __('waitinglist.you-are-logged-in') }}</p>
 
-            <form action="/logout" method="POST" class="direction-button">
+            <form action="{{ route('user.logout') }}" method="POST" class="direction-button">
                 @csrf
                 <input type="hidden" name="nameslug" value="{{ $user->nameslug }}">
                 <button>{{ __('actions.log_out') }}</button>
@@ -20,7 +20,7 @@
             <h2 class="text-xl font-semibold text-center mb-10">
                 {{ __('waitinglist.login-as', ['name' => $user->name]) }}
             </h2>
-            <form action="/login" method="POST">
+            <form action="{{ route('user.login') }}" method="POST">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input name="password" type="password" placeholder="password"
