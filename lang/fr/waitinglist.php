@@ -27,4 +27,13 @@ return [
     'my-confirmation' => "Mon message de confirmation",
     'edit-your-confirmation-message' => "Éditez votre message de confirmation ici",
 
+
+    // edit password
+    'my-password' => 'Mon mot de passe',
+    'type-current-password' => "Tout d'abord, tapez votre mot de passe existant :",
+    'type-new-password' => "Tapez votre nouveau mot de passe, et confirmez-le en le tapant une seconde fois :",
+    'current-password' => 'mot de passe existant…',
+    'new-password' => 'nouveau mot de passe…',
+    'new-password-confirmation' => 'confirmation…',
+
 ];

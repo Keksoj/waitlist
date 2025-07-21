@@ -2,7 +2,7 @@
 
 return [
     'app-title' => 'Waiting list',
-    'back-to-admin'=>'Back to the admin page',
+    'back-to-admin' => 'Back to the admin page',
 
     // login
     'nothing-to-see' => "Nothing to see here, go check out your therapist's page.",
@@ -25,4 +25,14 @@ return [
     // edit welcoming message
     'my-welcoming' => "My welcoming message",
     'edit-your-welcoming-message' => "Edit your welcoming message below",
+
+    // edit password
+    'my-password' => 'My password',
+    'type-current-password' => "First, type in your current password:",
+    'type-new-password' => "Type in your new password, and confirm it by typing it a second time:",
+    'current-password' => 'current password…',
+    'new-password' => 'new password…',
+    'new-password-confirmation' => 'confirmation…',
+
+
 ];
