@@ -38,6 +38,21 @@ class UserFactory extends Factory
     }
 
     /**
+     * Create the example user, important for trying out the app
+     */
+    public function doctorExample()
+    {
+        return [
+            'name' => 'Doctor Example',
+            'email' => 'doctor@example.com',
+            'email_verified_at' => now(),
+            'nameslug' => 'doctor-example',
+            'password' => static::$password ??= Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ];
+    }
+
+    /**
      * Indicate that the model's email address should be unverified.
      */
     public function unverified(): static
@@ -47,4 +62,3 @@ class UserFactory extends Factory
         ]);
     }
 }
-
