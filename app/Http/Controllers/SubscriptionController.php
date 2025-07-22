@@ -29,7 +29,7 @@ class SubscriptionController extends Controller
         ]);
 
 
-        $incomingFields['deletion_code'] = randomString();
+        $incomingFields['cancellation_code'] = randomString();
 
         // TODO: prevent email and telephone reuse (to prevent flooding)
         $subscription = Subscription::create($incomingFields);
@@ -73,10 +73,10 @@ class SubscriptionController extends Controller
     public function requestCancellation(Request $request)
     {
         $incomingInput = $request->validate([
-            'deletion_code' => ['required', 'size:7', 'alpha']
+            'cancellation_code' => ['required', 'size:7', 'alpha']
         ]);
 
-        $subscription = Subscription::where('deletion_code', $incomingInput['deletion_code'])->first();
+        $subscription = Subscription::where('cancellation_code', $incomingInput['cancellation_code'])->first();
 
         if ($subscription) {
             return view('confirmCancellation', ['subscription' => $subscription]);
@@ -88,10 +88,10 @@ class SubscriptionController extends Controller
     public function confirmCancellation(Request $request)
     {
         $incomingInput = $request->validate([
-            'deletion_code' => ['required', 'size:7', 'alpha']
+            'cancellation_code' => ['required', 'size:7', 'alpha']
         ]);
 
-        Subscription::where('deletion_code', $incomingInput['deletion_code'])->delete();
+        Subscription::where('cancellation_code', $incomingInput['cancellation_code'])->delete();
 
         return redirect('cancel-subscription')->with('success', __('waitinglist.cancel-success'));
     }

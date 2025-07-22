@@ -9,7 +9,7 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'telephone', 'email', 'commentary', 'user_id', 'deletion_code'];
+    protected $fillable = ['name', 'telephone', 'email', 'commentary', 'user_id', 'cancellation_code'];
 
     public function notes()
     {

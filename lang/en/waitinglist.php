@@ -9,17 +9,17 @@ return [
     'your-phone-number' => "Your phone number",
     'your-email' => "Your email (optional)",
     'commentary' => "Commentary (optional)",
-    'click-here-to-cancel' => "Click here to cancel a subscription with a deletion code",
+    'click-here-to-cancel' => "Click here to cancel a subscription with a cancellation code",
     'subscribe' => 'Subscribe',
     'could-not-create-subscription' => 'Could not create this subscription',
     'validate-human' => "Validate that you are human, and you're good to send your subscription!",
 
     // cancel subscription
     'cancel-title' => "Cancel subscription",
-    'cancel-your-subscription' => "Cancel your subscription by providing the deletion code that was given to you when you first subscribed.",
-    'your-deletion-code' => "Your deletion code",
+    'cancel-your-subscription' => "Cancel your subscription by providing the cancellation code that was given to you when you first subscribed.",
+    'your-cancellation-code' => "Your cancellation code",
     'subscription-not-found' => "This subscription is not to be found. Maybe it has been deleted already",
-    'cancel-success' => "Subscription cancelled successfully. All your data has been removed from the database",
+    'cancel-success' => "Subscription cancelled successfully. All associated data has been removed from the database",
 
     // confirm cancellation
     'confirm-cancel-title' => "confirm cancellation",
