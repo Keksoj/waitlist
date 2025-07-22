@@ -2,10 +2,10 @@
 
 @section('content')
     @auth
-        <h1 class="top-h1">{{ __('waitinglist.app-title') }}</h1>
+        <h1 class="top-h1">{{ __('waitlist.app-title') }}</h1>
 
         <div class="center-box-form">
-            <p class="small-paragraph">{{ __('waitinglist.you-are-logged-in') }}</p>
+            <p class="small-paragraph">{{ __('waitlist.you-are-logged-in') }}</p>
 
             <form action="{{ route('user.logout') }}" method="POST" class="direction-button">
                 @csrf
@@ -18,7 +18,7 @@
 
         <div class="center-box-form">
             <h2 class="text-xl font-semibold text-center mb-10">
-                {{ __('waitinglist.login-as', ['name' => $user->name]) }}
+                {{ __('waitlist.login-as', ['name' => $user->name]) }}
             </h2>
             <form action="{{ route('user.login') }}" method="POST">
                 @csrf

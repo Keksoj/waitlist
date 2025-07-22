@@ -2,7 +2,7 @@
 
 @section('content')
     @auth
-        <h1 class="top-h1">{{ __('waitinglist.my-waiting-list') }}</h1>
+        <h1 class="top-h1">{{ __('waitlist.my-waiting-list') }}</h1>
 
         <div class="my-8">
             @foreach ($subscriptions as $subscription)
@@ -44,7 +44,7 @@
 
                         <input type="hidden" name="subscription_id" value="{{ $subscription->id }}">
 
-                        <input name="content" type="text" placeholder="{{ __('waitinglist.add-note') }}"
+                        <input name="content" type="text" placeholder="{{ __('waitlist.add-note') }}"
                             class="bg-white border text-sm p-2 border-gray-400 rounded-l focus:outline-none focus:ring-0 focus:border-gray-800 focus:placeholder-transparent placeholder-gray-400">
 
                         <button type="submit" class="bg-gray-400 px-4 text-white rounded-r cursor-pointer text-sm">
@@ -68,15 +68,15 @@
 
 
         <a href="{{ route('user.edit-welcome') }}" class="direction-button m-4">
-            {{ __('waitinglist.edit-my-welcome') }}
+            {{ __('waitlist.edit-my-welcome') }}
         </a>
 
         <a href="{{ route('user.edit-confirmation') }}" class="direction-button m-4">
-            {{ __('waitinglist.edit-my-confirmation') }}
+            {{ __('waitlist.edit-my-confirmation') }}
         </a>
 
         <a href="{{ route('user.edit-password') }}" class="direction-button m-4">
-            {{ __('waitinglist.edit-my-password') }}
+            {{ __('waitlist.edit-my-password') }}
         </a>
     @endsection
 
@@ -88,6 +88,6 @@
     </form>
 @endsection
 @else
-<p>{{ __('waitinglist.you-should-not-see-this') }}</p>
+<p>{{ __('waitlist.you-should-not-see-this') }}</p>
 
 @endauth

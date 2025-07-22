@@ -2,14 +2,14 @@
 
 @section('content')
     @auth
-        <h1 class="top-h1">{{ __('waitinglist.my-confirmation') }}</h1>
+        <h1 class="top-h1">{{ __('waitlist.my-confirmation') }}</h1>
 
         <section class="user-paragraph">
             <p>“{{ $user->confirmation_message }}”</p>
         </section>
 
         <div class="small-paragraph">
-            <p>{{ __('waitinglist.edit-your-confirmation-message') }}:</p>
+            <p>{{ __('waitlist.edit-your-confirmation-message') }}:</p>
         </div>
 
         <form action="{{ route('user.update-confirmation') }}" method="POST" class="px-4 my-10 max-w-3xl mx-auto space-y-6">
@@ -35,11 +35,11 @@
     </form>
 
     <a href="{{ route('user.admin') }}" class="direction-button">
-        {{ __('waitinglist.back-to-admin') }}
+        {{ __('waitlist.back-to-admin') }}
     </a>
 @endsection
 
 @else
-<p>{{ __('waitinglist.you-should-not-see-this') }}</p>
+<p>{{ __('waitlist.you-should-not-see-this') }}</p>
 
 @endauth

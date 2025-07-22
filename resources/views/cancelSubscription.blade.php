@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="top-h1">{{ __('waitinglist.cancel-title') }}</h1>
+    <h1 class="top-h1">{{ __('waitlist.cancel-title') }}</h1>
 
     <div class="small-paragraph">
-        <p>{{ __('waitinglist.cancel-your-subscription') }}</p>
+        <p>{{ __('waitlist.cancel-your-subscription') }}</p>
     </div>
 
     @if (session('success'))
@@ -16,7 +16,7 @@
     <x-errors />
 
     <div class="center-box-form">
-        <h2 class="text-xl font-semibold text-center mb-10">{{ __('waitinglist.your-cancellation-code') }}</h2>
+        <h2 class="text-xl font-semibold text-center mb-10">{{ __('waitlist.your-cancellation-code') }}</h2>
         <form action="{{ route('guest.request-cancellation') }}" method="POST">
             @csrf
             <input name="cancellation_code" placeholder="ex: GABXDPEU"

@@ -17,35 +17,35 @@
 
         <div class="flex space-x-4">
             <div class="w-1/2">
-                <label for="name">{{ __('waitinglist.your-full-name') }}</label>
+                <label for="name">{{ __('waitlist.your-full-name') }}</label>
                 <input name="name" type="text" placeholder="ex: Christian Blinker…" class="input-style font-bold">
             </div>
 
             <div class="w-1/2">
-                <label for="telephone">{{ __('waitinglist.your-phone-number') }}</label>
+                <label for="telephone">{{ __('waitlist.your-phone-number') }}</label>
                 <input name="telephone" type="text" placeholder="ex: 06 …" class="input-style font-bold">
             </div>
         </div>
 
         <div>
-            <label for="email">{{ __('waitinglist.your-email') }}</label>
+            <label for="email">{{ __('waitlist.your-email') }}</label>
             <input name="email" type="text" placeholder="email (optional)"
                 class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium">
         </div>
 
         <div>
-            <label for="commentary">{{ __('waitinglist.commentary') }}</label>
+            <label for="commentary">{{ __('waitlist.commentary') }}</label>
             <textarea name="commentary"
                 class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium"></textarea>
         </div>
 
-        <p>{{ __('waitinglist.validate-human') }}</p>
+        <p>{{ __('waitlist.validate-human') }}</p>
         <div class="px-8 flex items-center justify-center space-x-2">
             <x-turnstile data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError"
                 data-expired-callback="onTurnstileExpired" data-theme="light" />
 
             <button type="submit" id="submit-button" class="validation-button h-[71px]" disabled=true>
-                {{ __('waitinglist.subscribe') }}
+                {{ __('waitlist.subscribe') }}
             </button>
         </div>
     </form>
@@ -74,6 +74,6 @@
     <a href="{{ route('guest.cancel-subscription') }}"
         class="inline-block bg-purple-500 text-white font-semibold
         py-2 px-4 rounded hover:bg-blue-600 transition">
-        {{ __('waitinglist.click-here-to-cancel') }}
+        {{ __('waitlist.click-here-to-cancel') }}
     </a>
 @endsection

@@ -83,7 +83,7 @@ class SubscriptionController extends Controller
             return view('confirmCancellation', ['subscription' => $subscription]);
         }
 
-        return back()->withErrors(['Not found', __('waitinglist.subscription-not-found')]);
+        return back()->withErrors(['Not found', __('waitlist.subscription-not-found')]);
     }
 
     public function confirmCancellation(Request $request)
@@ -94,7 +94,7 @@ class SubscriptionController extends Controller
 
         Subscription::where('cancellation_code', $incomingInput['cancellation_code'])->delete();
 
-        return redirect('cancel-subscription')->with('success', __('waitinglist.cancel-success'));
+        return redirect('cancel-subscription')->with('success', __('waitlist.cancel-success'));
     }
 
 

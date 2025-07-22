@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="top-h1">{{ __('waitinglist.confirm-cancel-title') }}</h1>
+    <h1 class="top-h1">{{ __('waitlist.confirm-cancel-title') }}</h1>
 
 
 
@@ -10,7 +10,7 @@
 
     <div class="center-box-form">
         <p class="small-paragraph mb-4">
-            {{ __('waitinglist.are-you-sure-to-cancel', ['name' => $subscription->name]) }}
+            {{ __('waitlist.are-you-sure-to-cancel', ['name' => $subscription->name]) }}
         </p>
         
         <form action="{{ route('guest.confirm-cancellation') }}" method="POST">

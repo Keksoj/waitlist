@@ -1,4 +1,4 @@
-# Waiting List
+# Waitlist
 
 Simple waiting list subscription app using Laravel + PostgresQL.
 
