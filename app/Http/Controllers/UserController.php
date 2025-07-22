@@ -75,26 +75,30 @@ class UserController extends Controller
         return view('confirmationMessage', ['user' => $user]);
     }
 
-    public function accessLogin(string $nameslug)
+    public function accessLogin(Request $request)
     {
-        $user = User::where('nameslug', $nameslug)->first();
+        if ($request['nameslug'] != null) {
+            $user = User::where('nameslug', $request['nameslug'])->first();
 
-        if ($user) {
-            return view('login', ['user' => $user]);
-        } else {
-            abort(404, 'User {$nameslug} not found');
+            if ($user) {
+                return view('login', ['user' => $user]);
+            } else {
+                abort(404, 'User {$nameslug} not found');
+            }
         }
+
+        return view('login');
     }
 
     public function login(Request $request)
     {
         $incomingFields = $request->validate([
-            'user_id' => ['required', 'exists:users,id'],
+            'nameslug' => ['required', 'exists:users,nameslug'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt([
-            'id' => $incomingFields['user_id'],
+            'nameslug' => $incomingFields['nameslug'],
             'password' => $incomingFields['password']
         ])) {
             $request->session()->regenerate();
