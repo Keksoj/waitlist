@@ -34,20 +34,40 @@
         </div>
 
         <div>
-            <label for="commentary">{{ __('waitinglist.commentary') }}<label>
-                    <textarea name="commentary"
-                        class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium"></textarea>
+            <label for="commentary">{{ __('waitinglist.commentary') }}</label>
+            <textarea name="commentary"
+                class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium"></textarea>
         </div>
 
         <p>{{ __('waitinglist.validate-human') }}</p>
         <div class="px-8 flex items-center justify-center space-x-2">
-            <x-turnstile data-theme="light" />
+            <x-turnstile data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError"
+                data-expired-callback="onTurnstileExpired" data-theme="light" />
 
-            <button class="validation-button h-[71px]">
+            <button type="submit" id="submit-button" class="validation-button h-[71px]" disabled=true>
                 {{ __('waitinglist.subscribe') }}
             </button>
         </div>
     </form>
+
+
+
+    <script>
+        function onTurnstileSuccess(token) {
+            console.log("✅ Turnstile complete!", token);
+            document.getElementById('submit-button').disabled = false;
+        }
+
+        function onTurnstileError() {
+            console.log("Turnstile failed!");
+            document.getElementById('submit-button').disabled = true;
+        }
+
+        function onTurnstileExpired() {
+            console.log("Turnstile expired");
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
 @endsection
 
 @section('footer')
