@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubscriptionController;
 
 Route::get('/', function () {
-    return view('home');
+    return app(UserController::class)->showSubscriptionForm('doctor-example', request());
 });
 
 Route::middleware('auth')->group(function () {
