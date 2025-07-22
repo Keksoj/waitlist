@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->text('cancellation_code')->nullable(); // TODO: remove the nullable property somehow
+            $table->renameColumn('cancellation_code', 'cancellation_code');
+        });
+
+
+        Schema::table('subscriptions', function (Blueprint $table) {
+            $table->text('cancellation_code')->nullable(false)->change();;
         });
     }
 
@@ -22,7 +27,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->dropColumn('cancellation_code');
+            $table->text('cancellation_code')->nullable()->change();
+        });
+
+        Schema::table('subscriptions', function (Blueprint $table) {
+            $table->renameColumn('cancellation_code', 'cancellation_code');
         });
     }
 };
