@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use App\Models\User;
+use App\Support\Helpers;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class SubscriptionController extends Controller
         ]);
 
 
-        $incomingFields['cancellation_code'] = randomString();
+        $incomingFields['cancellation_code'] = Helpers::randomString();
 
         // TODO: prevent email and telephone reuse (to prevent flooding)
         $subscription = Subscription::create($incomingFields);
@@ -118,17 +119,4 @@ class SubscriptionController extends Controller
 
         return back();
     }
-}
-
-function randomString(int $length = 7): string
-{
-    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    $result = '';
-
-    for ($i = 0; $i < $length; $i++) {
-        $result .= $characters[random_int(0, strlen($characters) - 1)];
-    }
-
-    return $result;
 }

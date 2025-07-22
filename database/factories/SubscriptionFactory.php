@@ -3,8 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Http\Controllers\SubscriptionController;
-use Illuminate\Support\Str;
+use App\Support\Helpers;
 use App\Models\User;
 
 /**
@@ -24,7 +23,7 @@ class SubscriptionFactory extends Factory
             'telephone' => fake()->phoneNumber(),
             'email' => fake()->safeEmail(),
             'commentary' => fake()->sentence(),
-            'cancellation_code' => Str::random(7), // TODO: use SubscriptionController::randomString
+            'cancellation_code' => Helpers::randomString(),
             'user_id' => User::factory(),
         ];
     }
