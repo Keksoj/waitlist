@@ -12,21 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $defaultWelcome = 'Hello!
-I am {{$user->name}}, a therapist.
-
-I am unable to give you a appointment for now, please subscribe to this waiting list and I will be sure get in touch when I have time for you.';
+            $defaultWelcome = 'Hello! I am unable to give you a appointment for now, please subscribe.';
             $table->text('welcoming_message')->default($defaultWelcome);
 
 
-            $defaultConfirmation = 'Very well, {{$subscription->name}}!
-
-I take good note that your
-phone number is {{$subscription->name}}, I will to contact you whenever I have the time you offer you an appointment.
-
-If you have given me your email, a confirmation email has been sent to your inbox.
-
-There is nothing more to do for you, I wish you a pleasant day.';
+            $defaultConfirmation = 'Very well, I will to contact you when I have time';
             $table->text('confirmation_message')->default($defaultConfirmation);
         });
     }
