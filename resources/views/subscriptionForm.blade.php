@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <h1 class="top-h1">{{ $user->name }}</h1>
 
     <section class="user-paragraph">
@@ -10,7 +9,7 @@
 
     <x-errors />
 
-    <!-- TODO: check out why the POST request is sent to /{nameslug}/subscribe and not to /subscribe -->
+
     <form action="{{ route('guest.subscribe', ['nameslug' => $user->nameslug]) }}" method="POST"
         class="px-4 my-10 max-w-3xl mx-auto space-y-6">
         @csrf
@@ -35,24 +34,46 @@
         </div>
 
         <div>
-            <label for="commentary">{{ __('waitinglist.commentary') }}<label>
-                    <textarea name="commentary" placeholder="what brings you here"
-                        class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium">
-                </textarea>
+            <label for="commentary">{{ __('waitinglist.commentary') }}</label>
+            <textarea name="commentary"
+                class="bg-white p-2 border border-gray-400 block py-2 w-full rounded focus:border-teal-500 font-medium"></textarea>
         </div>
-        <!-- TODO add a I am not a robot captcha-->
 
-        <div class="px-8 py-6 flex justify-between">
-            <button class="validation-button">
+        <p>{{ __('waitinglist.validate-human') }}</p>
+        <div class="px-8 flex items-center justify-center space-x-2">
+            <x-turnstile data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError"
+                data-expired-callback="onTurnstileExpired" data-theme="light" />
+
+            <button type="submit" id="submit-button" class="validation-button h-[71px]" disabled=true>
                 {{ __('waitinglist.subscribe') }}
             </button>
         </div>
     </form>
 
+
+
+    <script>
+        function onTurnstileSuccess(token) {
+            console.log("✅ Turnstile complete!", token);
+            document.getElementById('submit-button').disabled = false;
+        }
+
+        function onTurnstileError() {
+            console.log("Turnstile failed!");
+            document.getElementById('submit-button').disabled = true;
+        }
+
+        function onTurnstileExpired() {
+            console.log("Turnstile expired");
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+@endsection
+
+@section('footer')
     <a href="{{ route('guest.cancel-subscription') }}"
         class="inline-block bg-purple-500 text-white font-semibold
         py-2 px-4 rounded hover:bg-blue-600 transition">
         {{ __('waitinglist.click-here-to-cancel') }}
     </a>
-
-@section('content')
+@endsection

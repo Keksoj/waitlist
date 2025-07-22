@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use App\Models\User;
-use App\Models\Note;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -20,6 +20,7 @@ class SubscriptionController extends Controller
 
 
         $incomingFields = $request->validate([
+            'cf-turnstile-response' => ['required', Rule::turnstile()],
             'user_id' => ['required', 'exists:users,id'],
             'name' =>  ['required', 'min:3'],
             'telephone' => ['required'],
