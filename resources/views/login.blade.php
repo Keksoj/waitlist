@@ -39,8 +39,10 @@
 
                 <input name="password" type="password" placeholder="password"
                     class="w-full p-2 mb-4 border bg-white border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
-                <button type="submit"
-                    class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">{{ __('actions.log_in') }}</button>
+
+
+                <x-turnstile-with-button :button-text="__('actions.log_in')" />
+
             </form>
         </div>
 
