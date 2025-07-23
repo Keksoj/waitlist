@@ -77,7 +77,8 @@ class SubscriptionController extends Controller
             'cancellation_code' => ['required', 'size:7', 'alpha']
         ]);
 
-        $subscription = Subscription::where('cancellation_code', $incomingInput['cancellation_code'])->first();
+        $inputCode = strtoupper($incomingInput['cancellation_code']);
+        $subscription = Subscription::where('cancellation_code', $inputCode)->first();
 
         if ($subscription) {
             return view('confirmCancellation', ['subscription' => $subscription]);
