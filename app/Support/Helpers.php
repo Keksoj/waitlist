@@ -9,7 +9,7 @@ class Helpers
     public static function randomString(int $length = 7): String
     {
 
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
 
         $string = '';
 
