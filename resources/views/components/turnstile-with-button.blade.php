@@ -1,9 +1,9 @@
-<div class="px-8 flex items-center justify-center space-x-2">
+<div class="px-8 flex flex-wrap items-center justify-center gap-4">
     <x-turnstile data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError"
         data-expired-callback="onTurnstileExpired" data-theme="light" />
 
     <button type="submit" id="submit-button" class="validation-button h-[71px]" disabled=true>
-        {{ $buttontext }}
+        {{ $buttonText }}
     </button>
 </div>
 

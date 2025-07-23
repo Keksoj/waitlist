@@ -20,10 +20,11 @@
         <form action="{{ route('guest.request-cancellation') }}" method="POST">
             @csrf
             <input name="cancellation_code" placeholder="ex: GABXDPEU"
-                class="w-full p-2 mb-4 border bg-white border-gray-300 rounded focus:placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
-                send
-            </button>
+                class="w-full p-2 mb-10 border bg-white border-gray-300 rounded focus:placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+
+            <x-turnstile-with-button :button-text="__('actions.send')" />
+
         </form>
 
     </div>

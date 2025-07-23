@@ -13,7 +13,7 @@
 }
 
 .center-box-form {
-    @apply bg-blue-100 text-gray-800 rounded-xl shadow-md mx-auto my-8 sm:my-20 p-8 w-full max-w-sm;
+    @apply bg-blue-100 text-gray-800 rounded-xl shadow-md mx-auto my-8 sm:my-20 p-8 w-full max-w-lg;
 }
 
 .small-paragraph {

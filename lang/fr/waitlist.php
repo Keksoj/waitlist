@@ -10,7 +10,7 @@ return [
     'your-email' => "Votre email (facultatif)",
     'commentary' => "Ce qui vous amène (facultatif)",
     'click-here-to-cancel' => "Cliquez ici pour annuler une inscription déjà faite",
-    'subscribe' => "S'inscrire",
+    'subscribe' => 'S\'inscrire',
     'could-not-create-subscription' => 'Impossible de créer cette inscription',
     'validate-human' => "Cliquez que vous êtes humain, et vous pouvez envoyer votre inscription !",
 

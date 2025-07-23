@@ -40,7 +40,7 @@
         </div>
 
         <p>{{ __('waitlist.validate-human') }}</p>
-        <x-turnstile-with-button button-text="{{ __('waitlist.subscribe') }}" />
+        <x-turnstile-with-button :button-text="__('waitlist.subscribe')" />
     </form>
 @endsection
 
