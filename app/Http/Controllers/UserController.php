@@ -109,14 +109,11 @@ class UserController extends Controller
         return redirect('/admin');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        $incomingFields = $request->validate(
-            ['nameslug' => ['required']]
-        );
-        $nameslug = $incomingFields['nameslug'];
+        $user = Auth::user();
 
         Auth::logout();
-        return redirect('/' . $nameslug . '/login');
+        return view('subscriptionForm', ['user' => $user]);
     }
 }
