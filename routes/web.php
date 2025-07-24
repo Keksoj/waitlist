@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 Route::get('/login', [UserController::class, 'accessLogin'])->name('login');
+Route::get('/{nameslug}/admin', [UserController::class, 'accessLogin']);
+Route::get('/{nameslug}/login', [UserController::class, 'accessLogin']);
+
 Route::post('/login', [UserController::class, 'login'])->name('user.login');
 
 Route::get('/cancel-subscription', function () {
@@ -67,5 +70,3 @@ Route::post('/subscribe', [SubscriptionController::class, 'createSubscription'])
 
 Route::get('/{nameslug}', [UserController::class, 'showSubscriptionForm']);
 
-Route::get('/{nameslug}/admin', [UserController::class, 'accessLogin']);
-Route::get('/{nameslug}/login', [UserController::class, 'accessLogin']);
